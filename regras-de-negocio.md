@@ -74,12 +74,14 @@ Não é possível efetuar login sem ter um cadastro previamente criado.
 - O usuário pode **adicionar** ou **remover** produtos do **carrinho de compras**.
 - Os produtos podem ser:
     - **Pronta entrega:** podem ser comprados diretamente pelo botão “Comprar” ou pelo carrinho.
-    - **Encomenda (personalizados):** ao clicar em “Comprar”, o sistema abre um **chat com o administrador**, para que o cliente possa enviar as informações de personalização.
-- Após o envio das informações e confirmação pelo administrador, é **gerado um pedido** com:
+    - Encomenda (personalizados): ao clicar em “Comprar”, o sistema abre uma tela para preencher as informações do pedido, para que o cliente possa enviar as informações de personalização.
+- Após o envio das informações, é **gerado um pedido** com:
     - Nome do produto
     - Nome da cliente
     - ID (código) do pedido
-    - Demais informações listadas nas regras do administrador
+    - Cor
+    - Personagem
+    - Tamanho
 
 ### 🔹 Perfil do Usuário
 

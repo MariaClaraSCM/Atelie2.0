@@ -40,6 +40,7 @@ Após clonar o repositório:
 
 ```bash
 npm install
+npm install react-router-dom
 ```
 
 ---

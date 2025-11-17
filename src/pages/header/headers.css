@@ -1,0 +1,65 @@
+header, nav ul li, nav ul, img, nav, a, picture, legend{
+    background-color: #CDD1DC;
+    text-decoration: none;
+    color: #404040;
+    cursor: default;
+}
+
+header {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 5px 25px;
+}
+
+picture{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}
+
+picture img {
+    width: 25%;
+}
+
+nav {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 45%;
+    gap: 25px;
+}
+
+nav ul {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: row;
+    list-style-type: none;
+    gap: 25px;
+    padding: 0;
+    margin: 0;
+}
+
+input[type="search"] {
+    border: none;
+    outline: none;
+    padding: 6px 8px;
+    background-color: #fff;
+        width: 85%;
+}
+
+
+.procurar{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    width: 80%;
+    background-color: #fff;
+}
+
+.procurar img {
+    width: 10%;
+    background-color: #fff;
+}

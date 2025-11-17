@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # 🧵 Ateliê Vó Egina — Sistema Web
 
 Aplicação web para gerenciamento do Ateliê Vó Egina, utilizando uma stack moderna com **React** no front-end e **PHP** simples no back-end, rodando via **XAMPP**.
@@ -149,3 +150,4 @@ Projeto de uso **educacional e pessoal**.
 **[Maria Vitória Lopes](https://github.com/MariaVitoriaLopes/MariaVitoriaLopes)**
 --
 **Milena takahashi**
+=======

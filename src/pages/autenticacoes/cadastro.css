@@ -1,0 +1,60 @@
+body {
+  background: #EED0F1;
+}
+
+.cadastro-section {
+  margin: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+}
+
+.form-login {
+  display: flex;
+  gap: 20px;
+  width: 55%;
+  margin: auto;
+}
+
+.form-bloco {
+  width: 45%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #F6EFF3;
+}
+
+.form-bloco h2 {
+  margin-bottom: 10px;
+}
+
+.form-bloco label {
+  display: block;
+  margin-top: 10px;
+}
+
+.form-bloco input {
+  width: 95%;
+  padding: 6px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.texto-login {
+  text-align: center;
+}
+
+.ajustebotao {
+  display: flex;
+  justify-content: center;
+  margin-top: 3vw;
+}
+
+input.botao-submit {
+  background: #FF69B4;
+  border: none;
+  padding: 5px 10px;
+  font-size: 20px;
+  margin: auto;
+}

@@ -27,27 +27,6 @@ export default function Login() {
           <input type="file" />
         </div>
 
-        <div className="form-bloco">
-          <h2>Endereço</h2>
-
-          <label>CEP:</label>
-          <input type="text" />
-
-          <label>Rua:</label>
-          <input type="text" />
-
-          <label>Número:</label>
-          <input type="text" />
-
-          <label>Bairro:</label>
-          <input type="text" />
-
-          <label>Cidade:</label>
-          <input type="text" />
-
-          <label>Estado:</label>
-          <input type="text" />
-        </div>
       </div>
       <div className="ajustebotao">
         <input type="submit" value="Cadastrar" className="botao-submit" />

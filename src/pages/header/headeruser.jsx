@@ -1,6 +1,7 @@
 import logoHeader from '../../assets/logo-header.png';
 import lupa from '../../assets/lupa.png';
 import './headers.css';
+import { Link }from 'react-router-dom';
 
 export default function HeaderUser() {
     return(
@@ -22,7 +23,7 @@ export default function HeaderUser() {
                     <img src={lupa} alt="pesquisar" />
                 </div>
                 <ul>
-                    <li><a href="">Perfil</a></li>
+                    <li><Link to="/perfil">Perfil</Link></li>
                     <li><a href="">Sair</a></li>
                 </ul>
             </nav>

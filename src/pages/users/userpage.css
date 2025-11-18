@@ -1,0 +1,67 @@
+.ajustepage {
+    display: flex;
+    margin: 2vw auto;
+    width: 90%;
+}
+
+aside {
+    width: 25%;
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+    align-content: center;
+    /* justify-content: space-evenly; */
+    align-items: center;
+    height: 15vw;
+    gap: 15px;
+}
+
+.fotoPerfil{
+    border-radius: 50%;
+}
+main {
+    width: 70%;
+    display: flex;
+    /* align-items: center; */
+    justify-content: center;
+    height: 8vw;
+}
+
+.Infos {
+    background: #FEF1F8;
+    border: none;
+    font-size: 15px;
+    cursor: pointer;
+    padding: 8px 10px;
+    border-radius: 5px;
+    width: 50%;
+}
+
+.Infos.active {
+  background-color: #FF69B4;
+}
+
+.compras {
+    width: 100%;
+}
+
+
+.subMenuCompras {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 40%;
+}
+
+.btnCompras {
+    background: transparent;
+    border: none;
+    font-size: 20px;
+    cursor: pointer;
+}
+
+.btnCompras.ativo {
+    font-weight: bold;
+    text-decoration: underline;
+    font-size: 19px;
+}

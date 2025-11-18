@@ -10,10 +10,11 @@ body {
 }
 
 .form-login {
-  display: flex;
-  gap: 20px;
-  width: 55%;
-  margin: auto;
+    display: flex;
+    gap: 20px;
+    width: 55%;
+    margin: auto;
+    justify-content: center;
 }
 
 .form-bloco {

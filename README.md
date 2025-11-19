@@ -141,13 +141,13 @@ Projeto de uso **educacional e pessoal**.
 
 ## ✨ Desenvolvido por
 
-**[Bianca Agante Tiene](https://github.com/biancagante)**
+[Bianca Agante Tiene](https://github.com/biancagante)**
 --
-**[Guilherme Saltão](https://github.com/GuiFS0703)**
+[Guilherme Saltão](https://github.com/GuiFS0703)**
 --
-**[Maria Clara Magalhães](https://github.com/MariaClaraSCM)**
+[Maria Clara Magalhães](https://github.com/MariaClaraSCM)**
 --
-**[Maria Vitória Lopes](https://github.com/MariaVitoriaLopes/MariaVitoriaLopes)**
+[Maria Vitória Lopes](https://github.com/MariaVitoriaLopes/MariaVitoriaLopes)**
 --
-**Milena takahashi**
+Milena takahashi
 =======

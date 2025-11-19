@@ -11,16 +11,8 @@ export default function Cadastro() { // Renomeado para Cadastro
         telefone: '',
         email: '',
         senha: '',
-        confirma_senha: '', // Campo extra para validação no cliente
-        // Endereço
-        cep: '',
-        rua: '',
-        numero: '',
-        complemento: '',
-        bairro: '',
-        cidade: '',
-        estado: '',
-        logradouro: '',
+        confirma_senha: '',
+         // Campo extra para validação no cliente
         // Foto
         foto: null // Manter nulo por enquanto para simplificar o POST JSON
     });

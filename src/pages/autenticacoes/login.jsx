@@ -36,7 +36,7 @@ export default function Login() {
                 localStorage.setItem('usuarioLogado', JSON.stringify(data.usuario));
                 
                 // 2. Redirecionar para a página do usuário
-                navigate('/userpage'); 
+                navigate('/perfil'); // Ajuste a rota conforme necessário
             } else {
                 alert("Erro no Login: " + (data.erro || "Verifique seu e-mail e senha."));
             }

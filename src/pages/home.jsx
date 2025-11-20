@@ -1,5 +1,8 @@
 export default function Home(){
     return(
-        <h1>Oieee</h1>
+        <>
+            <h1>Oieee</h1>
+            <p>teste - bianca</p>
+        </>
     )
 }

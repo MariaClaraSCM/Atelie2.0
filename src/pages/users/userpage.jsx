@@ -60,37 +60,45 @@ export default function UserPage() {
       <div className="ajustepage">
         {/* MENU LATERAL */}
         <aside>
-          <picture className="fotoPerfil">
-            <img src={perfil} alt="" />
-            <legend>Olá, *nome usuario*</legend>
-          </picture>
+          <div className="juntos">
+            <picture className="fotoPerfil">
+              <img src={perfil} alt="" />
+              <legend>Olá, *nome usuario*</legend>
+            </picture>
 
-          <button
-            onClick={() => setSelectedSection("conta")}
-            className={`Infos ${selectedSection === "conta" ? "active" : ""}`}
-          >
-            Minha Conta
-          </button>
+            <button
+              onClick={() => setSelectedSection("conta")}
+              className={`Infos ${selectedSection === "conta" ? "active" : ""}`}
+            >
+              Minha Conta
+            </button>
 
-          <button
-            onClick={() => {
-              setSelectedSection("compras");
-              setSelectedSubSection("ativas");
-            }}
-            className={`Infos ${selectedSection === "compras" ? "active" : ""}`}
-          >
-            Minhas Compras
-          </button>
+            <button
+              onClick={() => {
+                setSelectedSection("compras");
+                setSelectedSubSection("ativas");
+              }}
+              className={`Infos ${
+                selectedSection === "compras" ? "active" : ""
+              }`}
+            >
+              Minhas Compras
+            </button>
 
-          <button
-            onClick={() => setSelectedSection("historico")}
-            className={`Infos ${
-              selectedSection === "historico" ? "active" : ""
-            }`}
-          >
-            Histórico
-          </button>
+            <button
+              onClick={() => setSelectedSection("historico")}
+              className={`Infos ${
+                selectedSection === "historico" ? "active" : ""
+              }`}
+            >
+              Histórico
+            </button>
+          </div>
+
+          <button>Sair</button>
         </aside>
+
+        <hr />
 
         {/* ÁREA PRINCIPAL */}
         <main>
@@ -179,21 +187,6 @@ export default function UserPage() {
           {selectedSection === "compras" && (
             <div className="compras">
               <h2>Compras Ativas</h2>
-              <hr />
-
-              {selectedSubSection === "ativas" && (
-                <div>
-                  <h3>Compras Ativas</h3>
-                  <p>Mostre aqui as compras que ainda não chegaram.</p>
-                </div>
-              )}
-
-              {selectedSubSection === "historico" && (
-                <div>
-                  <h3>Histórico de Compras</h3>
-                  <p>Mostre aqui as compras entregues.</p>
-                </div>
-              )}
             </div>
           )}
 

@@ -8,6 +8,7 @@ import UserPage from "./pages/users/userpage.jsx";
 import PageProdutos from "./pages/produtos/pageProdutos.jsx";
 // ADM
 import AdmDashboard from "./pages/admin/dashboard.jsx";
+import AdmProdutos from "./pages/admin/produtos.jsx";
 
 ReactDOM.createRoot(document.getElementById("root")).render(
   <BrowserRouter>
@@ -17,7 +18,8 @@ ReactDOM.createRoot(document.getElementById("root")).render(
       <Route path="/cadastro" element={<Cadastro />} />
       <Route path="/perfil" element={<UserPage />} />
       <Route path="/produtos" element={<PageProdutos />} />
-      <Route path="/dashboard" element={<AdmDashboard/>} />
+      <Route path="/dashboard" element={<AdmDashboard />} />
+      <Route path="/addproduto" element={<AdmProdutos />} />
     </Routes>
   </BrowserRouter>
 );

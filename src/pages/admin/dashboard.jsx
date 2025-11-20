@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./dashboard.css";
 import estatistica from "../../assets/adm/iconEstatistica.svg";
 import produto from "../../assets/adm/iconProdutos.svg";
@@ -69,7 +70,14 @@ export default function AdmDashboard() {
                     )}
                     {secao === "produtos" && (
                         <div>
-                            <h2>Produtos</h2>
+                            <div className="ajusteHeaderprodutos">
+                                <h2>Produtos</h2>
+                                <button><Link to="/addproduto">Adicionar novo produto</Link></button>
+                            </div>
+
+                            <div className="">
+                                <h1>QUando cria, aparece aqui</h1>
+                            </div>
                         </div>
                     )}
                     {secao === "pedidos" && (

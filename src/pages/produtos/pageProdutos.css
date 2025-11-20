@@ -1,4 +1,4 @@
-.flex{
+.flex {
     display: flex;
     gap: 20px;
     padding: 20px;
@@ -9,9 +9,10 @@
     flex-direction: column;
     width: 25%;
     align-items: center;
+    height: auto;
 }
 
-.ajusteAside{
+.ajusteAside {
     width: 50%;
 }
 
@@ -34,6 +35,18 @@
     gap: 10px;
 }
 
+.ajusteAplicar {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 2vw;
+}
+
+.mainProdutos {
+    width: 74%;
+    height: auto;
+}
+
 .ajusteHeaderMain {
     display: flex;
     align-items: center;
@@ -47,11 +60,12 @@
     gap: 20px;
 }
 
-.classificacao{
+.classificacao {
     padding: 5px 8px;
     border-radius: 5px;
 }
 
-.btnGrid img, .btnList img {
+.btnGrid img,
+.btnList img {
     width: 50%;
 }

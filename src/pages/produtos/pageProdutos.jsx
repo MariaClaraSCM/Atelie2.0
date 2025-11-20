@@ -67,7 +67,7 @@ export default function PageProdutos() {
           </form>
         </aside>
 
-        <section>
+        <section className="mainProdutos">
           <div className="ajusteHeaderMain">
             <div className="titulo">
               <h2>Coleção de produtos</h2>

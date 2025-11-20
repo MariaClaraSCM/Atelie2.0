@@ -2,6 +2,7 @@
     display: flex;
     margin: 2vw auto;
     width: 90%;
+    height: auto;
 }
 
 aside {
@@ -20,11 +21,15 @@ aside {
     border-radius: 50%;
 }
 main {
-    width: 70%;
+    width: 100%;
     display: flex;
     /* align-items: center; */
     justify-content: center;
-    height: 8vw;
+    height: auto;
+}
+
+.Forms{
+    width: 70%;
 }
 
 .Infos {

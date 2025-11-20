@@ -178,3 +178,38 @@ p {
     border-radius: 6px;
     font-weight: 500;
 }
+
+/* formulário pra editar as info do adm */
+canvas {
+    width: 200px;
+    height: 200px;
+    background: #ccc;
+    border-radius: 100%;
+    border: #333 solid 1px;
+}
+
+.layout {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.info-adm {
+    display: flex;
+}
+
+.form-editar {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    /* background: #fff; */
+    padding: 20px;
+    border-radius: 8px;
+    /* border: #ccc 1px solid; */
+    width: 100%;
+}
+
+.layout-form {
+    padding: 30px;
+    width: 100%;
+}

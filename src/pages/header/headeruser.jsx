@@ -24,7 +24,6 @@ export default function HeaderUser() {
                 </div>
                 <ul>
                     <li><Link to="/perfil">Perfil</Link></li>
-                    <li><a href="">Sair</a></li>
                 </ul>
             </nav>
         </header>

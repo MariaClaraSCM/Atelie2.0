@@ -4,7 +4,7 @@ import email from "../../assets/email.png";
 import endereco from "../../assets/endereco.png";
 import "./footer.css";
 
-export default function footer() {
+export default function Footer() {
   return (
     <footer>
       <div className="conteudo-footer">

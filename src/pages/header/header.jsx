@@ -1,5 +1,5 @@
 //import HeaderGuest from "./HeaderGuest";
-import HeaderUser from "./HeaderUser";
+import HeaderUser from "./headeruser";
 import HeaderAdmin from "./HeaderAdmin";
 
 export default function Header({ role }) {

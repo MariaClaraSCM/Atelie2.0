@@ -1,0 +1,57 @@
+.flex{
+    display: flex;
+    gap: 20px;
+    padding: 20px;
+}
+
+.asideProdutos {
+    display: flex;
+    flex-direction: column;
+    width: 25%;
+    align-items: center;
+}
+
+.ajusteAside{
+    width: 50%;
+}
+
+
+.inputPreco {
+    width: 30%;
+    border: none;
+    height: 2vw;
+}
+
+.ajusteMinMax {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+}
+
+.radios {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.ajusteHeaderMain {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.classificar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.classificacao{
+    padding: 5px 8px;
+    border-radius: 5px;
+}
+
+.btnGrid img, .btnList img {
+    width: 50%;
+}

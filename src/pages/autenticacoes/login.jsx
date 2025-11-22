@@ -32,14 +32,22 @@ export default function Login() {
 
             if (response.ok && data.sucesso) {
                 alert("Login realizado com sucesso!");
-                // 1. Armazenar os dados do usuário no localStorage/sessionStorage
+                
+                
                 localStorage.setItem('usuarioLogado', JSON.stringify(data.usuario));
                 
-                // 2. Redirecionar para a página do usuário
-                navigate('/perfil'); // Ajuste a rota conforme necessário
-            } else {
+               
+                if (data.usuario.tipo === 'admin') {
+                   
+                    navigate('/dashboard'); 
+                } else { 
+                    navigate('/perfil'); 
+                }
+                
+            } else { 
                 alert("Erro no Login: " + (data.erro || "Verifique seu e-mail e senha."));
             }
+            
         } catch (error) {
             console.error("Falha na conexão com a API:", error);
             alert("Não foi possível conectar ao servidor. Tente novamente mais tarde.");

@@ -56,7 +56,7 @@ export default function AdmDashboard() {
             </aside>
             <main className="content">
                 <header className="header">
-                    <h3>Bem-vinda, *Nome do adm*!</h3>
+                    <h3>Bem-vinda, {formData.nm_usuario || "Usuário"}!</h3>
                     <a href="/">Home</a>
                     <button className="btn-novo">
                         <span className="material-symbols-outlined iconMais">add</span>

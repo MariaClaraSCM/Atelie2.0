@@ -1,13 +1,13 @@
 import logoHeader from '../../assets/logo-header.png';
 import lupa from '../../assets/lupa.png';
 import './headers.css';
-import { Link }from 'react-router-dom';
+import { Link } from 'react-router-dom';
 
 export default function HeaderUser() {
-    return(
+    return (
         <header>
             <picture>
-                <img src={logoHeader} alt="Atelie Vó Egina"  />
+                <img src={logoHeader} alt="Atelie Vó Egina" />
                 <legend>Ateliê Vó Egina</legend>
             </picture>
 
@@ -18,7 +18,7 @@ export default function HeaderUser() {
                     <li><a href="">Produtos</a></li>
                     <li><a href="">Contato</a></li>
                 </ul>
-                <div class='procurar'>
+                <div className='procurar'>
                     <input type="search" name="" id="" placeholder='Pesquisar' />
                     <img src={lupa} alt="pesquisar" />
                 </div>

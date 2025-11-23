@@ -1,4 +1,4 @@
-import { useState, useEffect } from "react"; 
+import { useState, useEffect } from "react";
 import HeaderUser from "../header/headeruser.jsx";
 import Footer from "../footer/footer.jsx";
 import perfil from "../../assets/perfil.jfif";
@@ -8,11 +8,9 @@ const API_ENDERECO = "http://localhost/api/endereco.php";
 const API_USUARIO = "http://localhost/api/usuarios.php"; // API para buscar/editar o perfil
 
 export default function UserPage() {
- 
-
   // --- 1. ESTADO PRINCIPAL DO USUÁRIO ---
   const [formData, setFormData] = useState({
-    id_usuario: "", 
+    id_usuario: "",
     nm_usuario: "",
     email: "",
     telefone: "",
@@ -25,11 +23,9 @@ export default function UserPage() {
     estado: "",
   });
   const [cepErro, setCepErro] = useState("");
-  const [loading, setLoading] = useState(true); 
-
+  const [loading, setLoading] = useState(true);
 
   useEffect(() => {
-    
     const usuarioLogado = JSON.parse(localStorage.getItem("usuarioLogado"));
 
     if (usuarioLogado && usuarioLogado.id_usuario) {
@@ -39,58 +35,51 @@ export default function UserPage() {
         id_usuario: usuarioLogado.id_usuario,
         nm_usuario: usuarioLogado.nm_usuario,
         email: usuarioLogado.email,
-        telefone: usuarioLogado.telefone || '',
+        telefone: usuarioLogado.telefone || "",
       });
-      
-      
+
       fetchDadosCompletos(usuarioLogado.id_usuario);
     } else {
-      
       console.error("Usuário não logado ou ID ausente.");
-      navigate('/login'); 
+      navigate("/login");
       setLoading(false);
     }
   }, []);
 
   const fetchDadosCompletos = async (id) => {
     try {
-        
-        const response = await fetch(`${API_USUARIO}?id_usuario=${id}`);
-        const data = await response.json();
-        
-        if (response.ok && data.sucesso) {
-            const usuarioCompleto = data.usuario;
-            setFormData(prev => ({
-                ...prev,
-                nm_usuario: usuarioCompleto.nm_usuario,
-                email: usuarioCompleto.email,
-                telefone: usuarioCompleto.telefone,
-                // Assumindo que a API retorna os campos de endereço
-                cep: usuarioCompleto.cep || '',
-                rua: usuarioCompleto.rua || '',
-                numero: usuarioCompleto.numero || '',
-                bairro: usuarioCompleto.bairro || '',
-                cidade: usuarioCompleto.cidade || '',
-                estado: usuarioCompleto.estado || '',
-            }));
-        } else {
-            console.error("Erro ao buscar dados completos:", data.erro);
-        }
+      const response = await fetch(`${API_USUARIO}?id_usuario=${id}`);
+      const data = await response.json();
+
+      if (response.ok && data.sucesso) {
+        const usuarioCompleto = data.usuario;
+        setFormData((prev) => ({
+          ...prev,
+          nm_usuario: usuarioCompleto.nm_usuario,
+          email: usuarioCompleto.email,
+          telefone: usuarioCompleto.telefone,
+          // Assumindo que a API retorna os campos de endereço
+          cep: usuarioCompleto.cep || "",
+          rua: usuarioCompleto.rua || "",
+          numero: usuarioCompleto.numero || "",
+          bairro: usuarioCompleto.bairro || "",
+          cidade: usuarioCompleto.cidade || "",
+          estado: usuarioCompleto.estado || "",
+        }));
+      } else {
+        console.error("Erro ao buscar dados completos:", data.erro);
+      }
     } catch (error) {
-        console.error("Falha na API de busca de usuário:", error);
+      console.error("Falha na API de busca de usuário:", error);
     } finally {
-        setLoading(false);
+      setLoading(false);
     }
   };
-
-
- 
 
   const handleChange = (e) => {
     const { name, value } = e.target;
     setFormData((prev) => ({ ...prev, [name]: value }));
   };
-
 
   function handleCEPChange(e) {
     const value = e.target.value.replace(/\D/g, "");
@@ -107,7 +96,13 @@ export default function UserPage() {
         .then((data) => {
           if (!data || data.erro || !data.logradouro) {
             setCepErro("CEP não encontrado!");
-            setFormData(prev => ({ ...prev, rua: "", bairro: "", cidade: "", estado: "" }));
+            setFormData((prev) => ({
+              ...prev,
+              rua: "",
+              bairro: "",
+              cidade: "",
+              estado: "",
+            }));
             return;
           }
 
@@ -130,94 +125,110 @@ export default function UserPage() {
     e.preventDefault();
     if (loading) return;
 
-    
-
     try {
-        
-        const response = await fetch(API_USUARIO, { 
-            method: 'PUT', // Usando PUT para atualização
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(formData)
-        });
-        
-        const data = await response.json();
+      const response = await fetch(API_USUARIO, {
+        method: "PUT", // Usando PUT para atualização
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(formData),
+      });
 
-        if (response.ok && data.sucesso) {
-            alert("Informações atualizadas com sucesso! 🎉");
-          
-            const usuarioAtualizado = JSON.parse(localStorage.getItem('usuarioLogado'));
-            usuarioAtualizado.nm_usuario = formData.nm_usuario;
-            usuarioAtualizado.email = formData.email;
-            localStorage.setItem('usuarioLogado', JSON.stringify(usuarioAtualizado));
+      const data = await response.json();
 
-        } else {
-            alert("Erro ao salvar: " + (data.erro || "Verifique os dados e tente novamente."));
-        }
+      if (response.ok && data.sucesso) {
+        alert("Informações atualizadas com sucesso! 🎉");
 
+        const usuarioAtualizado = JSON.parse(
+          localStorage.getItem("usuarioLogado")
+        );
+        usuarioAtualizado.nm_usuario = formData.nm_usuario;
+        usuarioAtualizado.email = formData.email;
+        localStorage.setItem(
+          "usuarioLogado",
+          JSON.stringify(usuarioAtualizado)
+        );
+      } else {
+        alert(
+          "Erro ao salvar: " +
+            (data.erro || "Verifique os dados e tente novamente.")
+        );
+      }
     } catch (error) {
-        console.error("Falha na conexão com a API de edição:", error);//TRATAMENTO DE ERRO
-        alert("Não foi possível conectar ao servidor para salvar a edição.");
+      console.error("Falha na conexão com a API de edição:", error); //TRATAMENTO DE ERRO
+      alert("Não foi possível conectar ao servidor para salvar a edição.");
     }
   };
 
   // Controle das seções
   const [selectedSection, setSelectedSection] = useState("conta");
-  const [selectedSubSection, setSelectedSubSection] = useState("ativas");
-  
-  
+
   if (loading) {
     return (
-        <div style={{ padding: '50px', textAlign: 'center' }}>
-            <HeaderUser />
-            <p>Carregando informações do perfil...</p>
-            <Footer />
-        </div>
+      <div style={{ padding: "50px", textAlign: "center" }}>
+        <HeaderUser />
+        <p>Carregando informações do perfil...</p>
+        <Footer />
+      </div>
     );
   }
 
- 
   return (
     <div className="userpage-container">
       <HeaderUser />
 
       <div className="ajustepage">
         {/* MENU LATERAL */}
-        <aside>
-          <picture className="fotoPerfil">
-            <img src={perfil} alt="" />
-            
-            <legend>Olá, {formData.nm_usuario || "Usuário"}</legend> 
-          </picture>
+        <aside className="asideUserpage">
+          <div className="juntos">
+            <picture className="fotoPerfilP">
+              <img src={perfil} alt="" className="fotoPerfil"/ >
 
-          <button
-            onClick={() => setSelectedSection("conta")}
-            className={`Infos ${selectedSection === "conta" ? "active" : ""}`}
-          >
-            Minha Conta
-          </button>
+              <legend>Olá, {formData.nm_usuario || "Usuário"}</legend>
+            </picture>
 
-          <button
-            onClick={() => {
-              setSelectedSection("compras");
-              setSelectedSubSection("ativas");
-            }}
-            className={`Infos ${selectedSection === "compras" ? "active" : ""}`}
-          >
-            Minhas Compras
-          </button>
+            <button
+              onClick={() => setSelectedSection("conta")}
+              className={`Infos ${selectedSection === "conta" ? "active" : ""}`}
+            >
+              Minha Conta
+            </button>
 
-          <button
-            onClick={() => setSelectedSection("historico")}
-            className={`Infos ${
-              selectedSection === "historico" ? "active" : ""
-            }`}
-          >
-            Meus Favoritos
-          </button>
+            <button
+              onClick={() => {
+                setSelectedSection("compras");
+              }}
+              className={`Infos ${
+                selectedSection === "compras" ? "active" : ""
+              }`}
+            >
+              Minhas Compras
+            </button>
+
+            <button
+              onClick={() => setSelectedSection("historico")}
+              className={`Infos ${
+                selectedSection === "historico" ? "active" : ""
+              }`}
+            >
+              Histórico
+            </button>
+
+            <button
+              onClick={() => setSelectedSection("favoritos")}
+              className={`Infos ${
+                selectedSection === "favoritos" ? "active" : ""
+              }`}
+            >
+              Meus Favoritos
+            </button>
+          </div>
+
+          <button>Sair</button>
         </aside>
 
+        <hr />
+
         {/* ÁREA PRINCIPAL */}
-        <main>
+        <main className="mainUserpage">
           {/* SEÇÃO MINHA CONTA */}
           {selectedSection === "conta" && (
             <div className="Forms">
@@ -225,29 +236,56 @@ export default function UserPage() {
               <hr />
 
               {/* NOVIDADE: Adicionado onSubmit e removido action/method */}
-              <form className="formEditar" onSubmit={handleSubmit}> 
+              <form className="formEditar" onSubmit={handleSubmit}>
                 <div className="ajusteBlocoForm">
                   {/* BLOCO ESQUERDO */}
                   <div className="form-bloco">
-                    
-                    
                     <label>Nome:</label>
-                    <input type="text" name="nm_usuario" value={formData.nm_usuario} onChange={handleChange} />
+                    <input
+                      type="text"
+                      name="nm_usuario"
+                      value={formData.nm_usuario}
+                      onChange={handleChange}
+                    />
 
                     <label>Email:</label>
-                    <input type="email" name="email" value={formData.email} onChange={handleChange} />
+                    <input
+                      type="email"
+                      name="email"
+                      value={formData.email}
+                      onChange={handleChange}
+                    />
 
                     <label>Telefone:</label>
-                    <input type="tel" name="telefone" value={formData.telefone} onChange={handleChange} />
+                    <input
+                      type="tel"
+                      name="telefone"
+                      value={formData.telefone}
+                      onChange={handleChange}
+                    />
 
                     <label>Senha:</label>
-                    <input type="password" name="senha" placeholder="Preencha apenas para mudar" onChange={handleChange} />
+                    <input
+                      type="password"
+                      name="senha"
+                      placeholder="Preencha apenas para mudar"
+                      onChange={handleChange}
+                    />
 
                     <label>Confirme sua senha:</label>
-                    <input type="password" name="confirma_senha" placeholder="Preencha apenas para mudar" onChange={handleChange} />
+                    <input
+                      type="password"
+                      name="confirma_senha"
+                      placeholder="Preencha apenas para mudar"
+                      onChange={handleChange}
+                    />
 
                     <label>Foto de perfil:</label>
-                    <input type="file" disabled title="Funcionalidade desabilitada nesta versão" />
+                    <input
+                      type="file"
+                      disabled
+                      title="Funcionalidade desabilitada nesta versão"
+                    />
                   </div>
 
                   {/* BLOCO DIREITO */}
@@ -274,7 +312,12 @@ export default function UserPage() {
                     />
 
                     <label>Número:</label>
-                    <input type="text" name="numero" value={formData.numero} onChange={handleChange} />
+                    <input
+                      type="text"
+                      name="numero"
+                      value={formData.numero}
+                      onChange={handleChange}
+                    />
 
                     <label>Bairro:</label>
                     <input
@@ -312,54 +355,40 @@ export default function UserPage() {
             </div>
           )}
 
-          {/* SEÇÃO MINHAS COMPRAS */}
+          {/* SEÇÃO Compras Ativas */}
           {selectedSection === "compras" && (
             <div className="compras">
-              <h2>Minhas Compras</h2>
+              <h2>Compras Ativas</h2>
               <hr />
+              <p>
+                Aqui você listará todos os produtos que o usuário comprou e
+                ainda não foi entregue ou cancelado.
+              </p>
+            </div>
+          )}
 
-              {/* NOVIDADE: Menu de subseções */}
-              <div className="sub-menu-compras">
-                <button
-                    type="button"
-                    onClick={() => setSelectedSubSection("ativas")}
-                    className={`btnCompras ${selectedSubSection === "ativas" ? "ativo" : ""}`.trim()}
-                >
-                    Compras Ativas
-                </button>
-                <button
-                    type="button"
-                    onClick={() => setSelectedSubSection("historico")}
-                    className={`btnCompras ${selectedSubSection === "historico" ? "ativo" : ""}`.trim()}
-                >
-                    Histórico
-                </button>
-              </div>
+          {/* SEÇÃO historico */}
+          {selectedSection === "historico" && (
+            <div className="historico">
+              <h2>Meu historico</h2>
               <hr />
-
-              {/* CONTEÚDO DAS SUBSEÇÕES */}
-              {selectedSubSection === "ativas" && (
-                <div>
-                  <h3>Pedidos em Andamento</h3>
-                  <p>Aqui você listará os pedidos com status 'Pendente', 'Em andamento' ou 'A caminho'.</p>
-                </div>
-              )}
-
-              {selectedSubSection === "historico" && (
-                <div>
-                  <h3>Histórico de Compras (Entregues/Cancelados)</h3>
-                  <p>Aqui você listará os pedidos com status 'Entregue' ou 'Cancelado'.</p>
-                </div>
-              )}
+              <p>
+                Aqui você listará todos os produtos que o usuário comprou e já
+                foi entregue ou cancelado.
+              </p>
+              {/* Você usará o `id_usuario` para buscar os produtos na tabela `favoritos` */}
             </div>
           )}
 
           {/* SEÇÃO FAVORITOS (Antigo Histórico) */}
-          {selectedSection === "historico" && (
+          {selectedSection === "favoritos" && (
             <div className="favoritos">
               <h2>Meus Favoritos ❤️</h2>
               <hr />
-              <p>Aqui você listará todos os produtos que o usuário favoritou na tela inicial ou de produtos.</p>
+              <p>
+                Aqui você listará todos os produtos que o usuário favoritou na
+                tela inicial ou de produtos.
+              </p>
               {/* Você usará o `id_usuario` para buscar os produtos na tabela `favoritos` */}
             </div>
           )}
@@ -370,24 +399,6 @@ export default function UserPage() {
     </div>
   );
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 // import { useState } from "react";
 // import HeaderUser from "../header/headeruser.jsx";

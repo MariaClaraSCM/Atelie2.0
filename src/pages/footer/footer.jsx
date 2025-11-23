@@ -6,7 +6,7 @@ import "./footer.css";
 
 export default function Footer() {
   return (
-    <footer>
+    <footer id="footer">
       <div className="conteudo-footer">
         <div className="ajustefooter">
           <ul>

@@ -1,40 +1,65 @@
-body {
-  background: #EED0F1;
-}
-
 .cadastro-section {
   margin: auto;
   display: flex;
   flex-direction: column;
   gap: 30px;
+  background-image: url(/src/assets/autenticacao/fundo.svg);
+  height: 100vh;
+  align-items: center;
+  justify-content: center;
+}
+
+.ajusteVoltar {
+  width: 90%;
+  display: flex;
+  align-items: center;
+}
+
+.ajusteVoltar button {
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  font-weight: 600;
+}
+
+.fundoFormLogin {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .form-login {
     display: flex;
-    gap: 20px;
-    width: 55%;
+    gap: 5px;
+    width: 100%;
     margin: auto;
     justify-content: center;
+    flex-direction: column;
+    background-color: #fff;
+    padding: 20px 25px;
 }
 
-.form-bloco {
-  width: 45%;
-  padding: 15px;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  background-color: #F6EFF3;
+.ajus {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
 }
 
-.form-bloco h2 {
-  margin-bottom: 10px;
+.ajus div{
+  width: 50%;
 }
 
-.form-bloco label {
+.form-login label {
   display: block;
   margin-top: 10px;
 }
 
-.form-bloco input {
+.form-login input {
   width: 95%;
   padding: 6px;
   margin-top: 4px;
@@ -42,20 +67,27 @@ body {
   border: 1px solid #ccc;
 }
 
-.texto-login {
-  text-align: center;
-}
-
-.ajustebotao {
-  display: flex;
-  justify-content: center;
-  margin-top: 3vw;
-}
-
 input.botao-submit {
-  background: #FF69B4;
-  border: none;
-  padding: 5px 10px;
-  font-size: 20px;
-  margin: auto;
+    background: #FF69B4;
+    border: none;
+    padding: 10px 9px;
+    font-size: 20px;
+    margin: 15px auto;
+}
+
+.cadastroLogin a {
+  text-align: center;
+    color: #FF0066;
+  text-decoration-line: underline;
+  /* Define que haverá uma linha */
+  text-decoration-color: #FF0066;
+  /* Define a cor da linha */
+  text-decoration-thickness: 1px;
+  /* Define a espessura da linha */
+  text-underline-offset: 1px;
+}
+
+.ajusteFinal {
+  width: 90%;
+  text-align: center;
 }

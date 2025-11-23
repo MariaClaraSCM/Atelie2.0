@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { Link } from "react-router-dom";
 import "./dashboard.css";
 import estatistica from "../../assets/adm/iconEstatistica.svg";
 import produto from "../../assets/adm/iconProdutos.svg";
@@ -56,8 +57,8 @@ export default function AdmDashboard() {
             </aside>
             <main className="content">
                 <header className="header">
-                    <h3>Bem-vinda, {formData.nm_usuario || "Usuário"}!</h3>
-                    <a href="/">Home</a>
+                    <h3>Bem-vinda, Usuário!</h3>
+                    <a><Link to="/">Home</Link></a>
                     <button className="btn-novo">
                         <span className="material-symbols-outlined iconMais">add</span>
                         Novo Pedido
@@ -69,7 +70,14 @@ export default function AdmDashboard() {
                     )}
                     {secao === "produtos" && (
                         <div>
-                            <h2>Produtos</h2>
+                            <div className="ajusteHeaderprodutos">
+                                <h2>Produtos</h2>
+                                <button><Link to="/addproduto">Adicionar novo produto</Link></button>
+                            </div>
+
+                            <div className="">
+                                <h1>QUando cria, aparece aqui</h1>
+                            </div>
                         </div>
                     )}
                     {secao === "pedidos" && (

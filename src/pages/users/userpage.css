@@ -5,31 +5,82 @@
     height: auto;
 }
 
-aside {
+.asideUserpage {
     width: 25%;
     display: flex;
     flex-direction: column;
     flex-wrap: nowrap;
     align-content: center;
-    /* justify-content: space-evenly; */
+    align-items: center;
+    height: 38vw;
+    justify-content: space-between;
+}
+
+.juntos {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    align-content: center;
     align-items: center;
     height: 15vw;
     gap: 15px;
 }
 
-.fotoPerfil{
+.fotoPerfilP {
+    align-items: center;
     border-radius: 50%;
+    display: flex;
+    gap: 20px;
 }
-main {
-    width: 100%;
+
+.fotoPerfil {
+    width: 30% !important;
+}
+
+.mainUserpage {
+    width: 85%;
     display: flex;
     /* align-items: center; */
     justify-content: center;
     height: auto;
 }
 
-.Forms{
-    width: 70%;
+.Forms {
+    width: 90%;
+}
+
+.ajusteBlocoForm {
+    display: flex;
+    gap: 20px;
+}
+
+.form-bloco {
+  width: 45%;
+  padding: 15px;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  background-color: #F6EFF3;
+}
+
+.form-bloco h2 {
+  margin-bottom: 10px;
+}
+
+.form-bloco label {
+  display: block;
+  margin-top: 10px;
+}
+
+.form-bloco input {
+  width: 95%;
+  padding: 6px;
+  margin-top: 4px;
+  border-radius: 6px;
+  border: 1px solid #ccc;
+}
+
+.texto-login {
+  text-align: center;
 }
 
 .Infos {
@@ -43,11 +94,16 @@ main {
 }
 
 .Infos.active {
-  background-color: #FF69B4;
+    background-color: #FF69B4;
 }
 
-.compras {
+.compras, .historico, .favoritos {
     width: 100%;
+    padding: 0 30px;
+}
+
+.compras h2, .historico h2, .favoritos h2, .Forms h2{
+text-align: center;
 }
 
 

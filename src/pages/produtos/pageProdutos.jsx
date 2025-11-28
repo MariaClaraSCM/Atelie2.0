@@ -1,4 +1,4 @@
-import HeaderGuest from "../header/headerguest";
+import Header from "../header/header.jsx";
 import Footer from "../footer/footer";
 import "./pageProdutos.css";
 import FiltroProdutos from "./filtroProdutos.jsx";
@@ -7,7 +7,7 @@ import MainProdutos from "./mainProdutos";
 export default function PageProdutos() {
   return (
     <>
-      <HeaderGuest />
+       <Header/>
 
       <div className="flex">
         <FiltroProdutos />

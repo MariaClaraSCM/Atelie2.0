@@ -1,14 +1,15 @@
 import grid from "../../assets/produtos/grid.png";
 import list from "../../assets/produtos/list.png";
+import ListaProdutos from "./listarprodutos";
 import "./pageProdutos.css";
 
 export default function MainProdutos() {
   return (
-    <section className="mainProdutos">
+    <section className="mainComprarProdutos">
       <div className="ajusteHeaderMain">
         <div className="titulo">
           <h2>Coleção de produtos</h2>
-          <p>mostrando 1-12 de **** resultadois</p>
+          <p>mostrando 1-12 de **** resultados</p>
         </div>
 
         <div className="classificar">
@@ -31,8 +32,8 @@ export default function MainProdutos() {
         </div>
       </div>
 
-      <main className="mainProdutos">
-        <h1>Coloca os produtos cadastrados aqui</h1>
+      <main className="mainComprarProdutos">
+        <ListaProdutos />
       </main>
     </section>
   );

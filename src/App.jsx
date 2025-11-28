@@ -1,7 +1,7 @@
 import { useState, useEffect } from "react";
 import Home from "./pages/home.jsx";
 import "./App.css";
-import HeaderGuest from "./pages/header/headerguest.jsx";
+import Header from "./pages/header/header.jsx";
 import Footer from "./pages/footer/footer.jsx";
 
 //FUNÇÃO PARA VERIFICAR A CONEXÃO COM A API LOCALHOST
@@ -15,7 +15,7 @@ function App() {
 
 return (
   <>
-    <HeaderGuest />
+    <Header />
     <Home />
     <Footer />
   </>

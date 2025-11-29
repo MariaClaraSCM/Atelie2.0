@@ -5,15 +5,15 @@ import iconPensadoComAmor from "../assets/home/iconPensadoComAmor.svg";
 import imgProdutos from "../assets/home/imgProdutos.png";
 import imgEncomendas from "../assets/home/imgEncomendas.png";
 
-export default function Home(){
-    return(
+export default function Home() {
+    return (
         <div className="home">
             <section className="hero">
                 <div className="hero-text">
 
                     <h1>Bolsas feitas à mão com amor.</h1>
                     <p>Aqui, cada peça é feita com amor, cuidado e um toque especial de carinho de vó. Produzimos bolsas, lancheiras e muito mais — tudo personalizado para encantar e facilitar o dia a dia da sua família.</p>
-                    <button className="hero-btn pronta-entrega">Ver produtos</button>
+                    <a href="/verprodutos"><button className="hero-btn pronta-entrega">Ver produtos</button></a>
                     <button className="hero-btn encomendar">Encomendar produto</button>
                 </div>
             </section>
@@ -52,7 +52,7 @@ export default function Home(){
                         <img src={imgProdutos} alt="" />
                         <h3>Bolsas e Mais</h3>
                         <p>Explore: linha escolar, lembrancinhas, maternidade e muito mais, prontos para você escolher e se encantar.</p>
-                        <button className="product-btn pronta-entrega">Ver todos os produtos</button>
+                        <a href="/verprodutos"><button className="product-btn pronta-entrega">Ver todos os produtos</button></a>
                     </div>
                     <div className="product">
                         <img src={imgEncomendas} alt="" />
@@ -62,29 +62,73 @@ export default function Home(){
                     </div>
                 </div>
             </section>
-            <section className="testimonials">
+            <section className="testemonials">
                 <h1>Depoimentos</h1>
-                <div className="testimonials-carousel">
-                    <button>bef</button>
-                    <div className="testimonial-messages">
-                        <div className="testimonial-card">
-                            <div className="info-user">
-                                <canvas className="placehoder"></canvas>
-                                <span>Maria</span>
-                            </div>
-                            <ul className="review-stars">
-                                <li>⭐</li>
-                                <li>⭐</li>
-                                <li>⭐</li>
-                                <li>⭐</li>
-                                <li>⭐</li>
-                            </ul>
-                            <p>Adorei minha bolsa personalizada! A qualidade é incrível e o atendimento foi super atencioso. Recomendo muito!</p>
+                <div className="container-carrossel">
+                    <button id="btn-voltar">
+                        <i className="fa-solid fa-chevron-left"></i>
+                    </button>
+                    <div className="carrossel">
+                        <div className="testemonial-messages">
+                            {
+                                testemonials.map((testemonial, index) => (
+                                    <div className="testemonial-card" key={index}>
+                                        <div className="info-user">
+                                            <img className="placeholder" src={testemonial.photo} alt="User photo" />
+                                            <span>{testemonial.name}</span>
+                                        </div>
+                                        <ul className="review-stars">
+                                            {Array.from({ length: testemonial.rating }).map((_, i) => (
+                                                <li key={i}><i className="fa-solid fa-star"></i></li>
+                                            ))}
+                                        </ul>
+                                        <p>{testemonial.message}</p>
+                                    </div>
+                                ))
+                            }
+                            {
+                                testemonials.map((testemonial, index) => (
+                                    <div className="testemonial-card" key={index} aria-hidden>
+                                        <div className="info-user">
+                                            {/* <canvas >{testemonial.photo}</canvas> */}
+                                            <img className="placeholder" src={testemonial.photo} alt="User photo" />
+                                            <span>{testemonial.name}</span>
+                                        </div>
+                                        <ul className="review-stars">
+                                            {Array.from({ length: testemonial.rating }).map((_, i) => (
+                                                <li key={i}><i className="fa-solid fa-star"></i></li>
+                                            ))}
+                                        </ul>
+                                        <p>{testemonial.message}</p>
+                                    </div>
+                                ))
+                            }
                         </div>
                     </div>
-                    <button>aft</button>
+                    <button id="btn-proximo"><i className="fa-solid fa-chevron-right"></i></button>
                 </div>
             </section>
         </div>
     )
 }
+
+const testemonials = [
+    {
+        photo: 'https://imebehavioralhealth.com/wp-content/uploads/2021/10/user-icon-placeholder-1.png',
+        name: 'Ana',
+        rating: 5,
+        message: 'Adorei minha bolsa personalizada! A qualidade é incrível e o atendimento foi super atencioso. Recomendo muito!'
+    },
+    {
+        photo: 'https://imebehavioralhealth.com/wp-content/uploads/2021/10/user-icon-placeholder-1.png',
+        name: 'Brenda',
+        rating: 5,
+        message: 'Adorei minha bolsa personalizada! A qualidade é incrível e o atendimento foi super atencioso. Recomendo muito!'
+    },
+    {
+        photo: 'https://imebehavioralhealth.com/wp-content/uploads/2021/10/user-icon-placeholder-1.png',
+        name: 'Clara',
+        rating: 5,
+        message: 'Adorei minha bolsa personalizada! A qualidade é incrível e o atendimento foi super atencioso. Recomendo muito!'
+    },
+]

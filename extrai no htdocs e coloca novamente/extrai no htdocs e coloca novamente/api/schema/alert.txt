@@ -1,3 +1,0 @@
-Por que criei essa pasta e estes arquivos? Simples, aqui temos exemplos da estrutura de cada json que cada endpoint vai precisar. 
-Apenas copie e cole se quiser, mas existe uma pasta de exemplos aonde teremos jsons prontos para testes ou apenas para popular o 
-banco mesmo.

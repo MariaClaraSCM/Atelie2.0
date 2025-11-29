@@ -1,0 +1,41 @@
+.carrinho-body {
+    background-color: #fff;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    border-radius: 10px;
+    padding: 2vw;
+    margin: 15px;
+}
+
+.carrinho-header, .carrinho-main {
+    width: 100%;
+}
+
+section {
+    margin-bottom: 0;
+}
+
+.carrinho-header {
+    /* display: flex; */
+    align-items: center;
+    gap: 10px;
+}
+
+.carrinho-produto {
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.carrinho-foto {
+    width: 95px;
+    height: auto;
+    background-size: 100%;
+    background-color: aqua;
+}
+
+.carrinho-produto h3, .carrinho-header h2 {
+    padding: 0;
+    margin: 10px 0;
+}

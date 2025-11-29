@@ -1,0 +1,31 @@
+Oi gente! Aqui é a Bianca, e como dito no grupo do zap, aqui é pra comentar coisas que um commit simples não comporta, então lembre-se: seus comentários são importantes para a equipe!
+
+Bom, agora entrando de fato no código:
+
+Se é sua primeira vez mexendo nesse sistema, ou atualizando:
+    A manipulação da api deve ser copiada daqui para o htdocs da sua máquina.
+
+Se você mexeu na api e deseja atualizar para os outros da equipe, copie sua api do htdocs e cole a pasta api (não dentro), substitua arquivos se necessário, apenas se tudo estiver rodando limpo no seu projeto. Não exclua dos amiguinhos, viu!
+
+Por favor, não comprima a pasta api, assim fica mais difícil de entender o que foi mudado.
+
+Aqui, comente suas mudanças que podem afetar outros colegas, seus feitos e suas dores e bugs.
+
+Isso NÃO substitui as boas práticas nos commits, ainda deve ser mantido a regra de um título conciso e descritivo. Aqui também não substitui um Issue!
+
+Tente manter um padrão. Após um tempo, podemos excluir os comentários velhos pra não ficar enorme.
+
+-- NOME -- ou === NOME === (não importa a quantidade de caracteres, desde que haja separação)
+Feitos, bugs, erros...
+
+--- BIANCA ----
+Eu acabei de puxar esse projeto da Maria Clara, alinhamos as coisas em call.
+Vou colar minha home e estilização se não houverem commits. 
+Os links para a página de filtroProduto estão quebrados, assim como alguns SVGs, todos foram comentados!!
+A api foi substituita por uma feita pela MC, então copie e cole no htdocs.
+As antigas apis foram salvas na minha máquina.
+Colei minha home, a estilização dela e o link pros ícones: biblioteca cdn do font awesome.
+A home ainda não tá pronta por causa do carrossel.
+Criei carrinho com estilização básicona pra começar a mexer lógica.
+Commitando em 29/11 - 02:36.
+---

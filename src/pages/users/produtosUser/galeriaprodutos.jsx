@@ -1,8 +1,8 @@
 import { useEffect, useState } from "react";
 import { listarProdutos } from "../../../services/api";
 import { useNavigate } from "react-router-dom";
-import fav from "../../../assets/produtos/fav.svg";
-import "./produtos.css"
+// import fav from "../../../assets/produtos/fav.svg";
+import "./produtos.css";
 
 // CARROSSEL DE FOTOS
 function Carousel({ fotos, nome }) {
@@ -76,7 +76,7 @@ export default function GaleriaProdutos() {
             </div>
 
             <div className="acoesAdm">
-              <button className="favoritar"></button>
+              <button className="favoritar" onClick={() => navigate("/carrinho")}>Adicionar</button>
             </div>
           </div>
         ))}

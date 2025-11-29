@@ -1,2 +1,0 @@
-Se você não leu o arquivo da outra pasta, eu irei te explicar: Aqui temos alguns exemplos prontos de jsons para popular nosso banco
- ou para testes mesmo. Vocês podem adicionar quantos fore necessários. Desde já agradeço a atenção.

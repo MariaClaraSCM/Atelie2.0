@@ -81,7 +81,7 @@ export default function AdmDashboard() {
           <Link to="/">Home</Link>
 
           <button className="btn-novo">
-            <span className="material-symbols-outlined iconMais">add</span>
+            <i class="fa-solid fa-plus"></i>
             Novo Pedido
           </button>
         </header>

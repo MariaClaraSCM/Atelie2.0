@@ -1,72 +1,82 @@
-header, nav ul li, nav ul, img, nav, a, picture, legend{
-    text-decoration: none;
-    color: #404040;
-    cursor: default;
-}
-
 header {
+    background: #f4d7f4;
+    padding: 10px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 5px 25px;
 }
 
-picture{
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-}
-
-picture img {
-    width: 25%;
-}
-
+/* ===== NAV PRINCIPAL ===== */
 nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45%;
-    gap: 25px;
+  display: flex;
+  align-items: center;
+  gap: 40px;
+}
+
+nav picture img {
+  width: 150px; /* ajuste do tamanho do logo */
 }
 
 nav ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    list-style-type: none;
-    gap: 25px;
-    padding: 0;
-    margin: 0;
+  display: flex;
+  list-style: none;
+  gap: 25px;
 }
 
-nav ul li a{  
-  transition: 0.5s ease; 
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
 }
 
-nav ul li a:hover {
-  color: #FEF1F8;
+/* ===== AJUSTE DO BLOCO DIREITO ===== */
+.ajusteNav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
-input[type="search"] {
-    border: none;
-    outline: none;
-    padding: 6px 8px;
-    background-color: #fff;
-        width: 85%;
+/* ===== CAMPO DE BUSCA ===== */
+.procurar {
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
 }
 
-
-.procurar{
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    background-color: #fff;
+.procurar input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
 }
 
 .procurar img {
-    width: 10%;
-    background-color: #fff;
+  width: 16px;
+  cursor: pointer;
+}
+
+/* ===== LINKS "ENTRAR" E "CADASTRO" ===== */
+.ajusteNav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.ajusteNav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Botão de cadastro com fundo escuro */
+.ajusteNav ul li:last-child a {
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
 }

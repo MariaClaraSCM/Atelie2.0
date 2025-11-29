@@ -167,19 +167,11 @@ export default function UserPage() {
   
   if (loading) {
     return (
-<<<<<<< HEAD
         <div style={{ padding: '50px', textAlign: 'center' }}>
             <HeaderUser />
             <p>Carregando informações do perfil...</p>
             <Footer />
         </div>
-=======
-      <div style={{ padding: "50px", textAlign: "center" }}>
-        <Header />
-        <p>Carregando informações do perfil...</p>
-        <Footer />
-      </div>
->>>>>>> d38a28a (Fiz CRUD de categoria, CRUD de produto, e eles aparecem em todas as telas)
     );
   }
 

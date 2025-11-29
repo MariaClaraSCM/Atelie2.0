@@ -173,7 +173,7 @@ export default function UserPage() {
 
   return (
     <div className="userpage-container">
-      <HeaderUser />
+      <Header />
 
       <div className="ajustepage">
         {/* MENU LATERAL */}
@@ -184,6 +184,11 @@ export default function UserPage() {
 
               <legend>Olá, {formData.nm_usuario || "Usuário"}</legend>
             </picture>
+          <picture className="fotoPerfil">
+            <img src={perfil} alt="" />
+            
+            <legend>Olá, {formData.nm_usuario || "Usuário"}</legend> 
+          </picture>
 
             <button
               onClick={() => setSelectedSection("conta")}
@@ -223,6 +228,14 @@ export default function UserPage() {
           </div>
 
           <button>Sair</button>
+          <button
+            onClick={() => setSelectedSection("historico")}
+            className={`Infos ${
+              selectedSection === "historico" ? "active" : ""
+            }`}
+          >
+            Meus Favoritos
+          </button>
         </aside>
 
         <hr />
@@ -359,6 +372,7 @@ export default function UserPage() {
           {selectedSection === "compras" && (
             <div className="compras">
               <h2>Compras Ativas</h2>
+              <h2>Minhas Compras</h2>
               <hr />
               <p>
                 Aqui você listará todos os produtos que o usuário comprou e
@@ -372,11 +386,21 @@ export default function UserPage() {
             <div className="historico">
               <h2>Meu historico</h2>
               <hr />
-              <p>
-                Aqui você listará todos os produtos que o usuário comprou e já
-                foi entregue ou cancelado.
-              </p>
-              {/* Você usará o `id_usuario` para buscar os produtos na tabela `favoritos` */}
+
+              {/* CONTEÚDO DAS SUBSEÇÕES */}
+              {selectedSubSection === "ativas" && (
+                <div>
+                  <h3>Pedidos em Andamento</h3>
+                  <p>Aqui você listará os pedidos com status 'Pendente', 'Em andamento' ou 'A caminho'.</p>
+                </div>
+              )}
+
+              {selectedSubSection === "historico" && (
+                <div>
+                  <h3>Histórico de Compras (Entregues/Cancelados)</h3>
+                  <p>Aqui você listará os pedidos com status 'Entregue' ou 'Cancelado'.</p>
+                </div>
+              )}
             </div>
           )}
 

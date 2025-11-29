@@ -6,31 +6,29 @@ import { Link } from "react-router-dom";
 
 export default function HeaderGuest() {
   return (
-    <header className="backHeader">
-      <div className="ajusteEsquerda">
+    <header>
+      <nav>
         <picture>
           <img src={logoHeader} alt="Atelie Vó Egina" />
         </picture>
 
-        <nav>
-          <ul>
-            <li>
-              <Link to="/">Home</Link>
-            </li>
-            <li>
-              <a href="#why-choose-us">Sobre</a>
-            </li>
-            <li>
-              <a href="#our-products">Produtos</a>
-            </li>
-            <li>
-              <a href="#footer">Contato</a>
-            </li>
-          </ul>
-        </nav>
-      </div>
+        <ul>
+          <li>
+            <Link to="/">Home</Link>
+          </li>
+          <li>
+            <Link to="/#sobre">Sobre</Link>
+          </li>
+          <li>
+            <Link to="/verprodutos">Produtos</Link>
+          </li>
+          <li>
+            <Link to="/#contato">Contato</Link>
+          </li>
+        </ul>
+      </nav>
 
-      <div className="ajusteDireita">
+      <div className="ajusteNav">
         <div className="procurar">
           <input type="search" name="" id="" placeholder="Pesquisar" />
           <img src={lupa} alt="pesquisar" />
@@ -39,11 +37,8 @@ export default function HeaderGuest() {
           <li>
             <Link to="/login">Entrar</Link>
           </li>
-          <li className="cadastro">
-            <Link to="/cadastro">
-              <img src={perfil} alt="" />
-              Cadastro
-            </Link>
+          <li>
+            <Link to="/cadastro">Cadastro</Link>
           </li>
         </ul>
       </div>

@@ -1,92 +1,82 @@
-.backHeader {
-    background-color: #EED0F2;
+header {
+    background: #f4d7f4;
+    padding: 10px 30px;
     display: flex;
     align-items: center;
     justify-content: space-between;
-    padding: 15px 30px;
 }
 
-.ajusteEsquerda,
-.ajusteDireita {
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    gap: 40px;
+/* ===== NAV PRINCIPAL ===== */
+nav {
+  display: flex;
+  align-items: center;
+  gap: 40px;
 }
 
-.ajusteEsquerda picture a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
+nav picture img {
+  width: 150px; /* ajuste do tamanho do logo */
 }
 
-.ajusteEsquerda picture a img {
-    width: 100%;
+nav ul {
+  display: flex;
+  list-style: none;
+  gap: 25px;
 }
 
-.ajusteEsquerda nav {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    width: 45%;
-    gap: 25px;
+nav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
 }
 
-.ajusteEsquerda nav ul,
-.ajusteDireita ul {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-direction: row;
-    list-style-type: none;
-    gap: 25px;
-    padding: 0;
-    margin: 0;
+/* ===== AJUSTE DO BLOCO DIREITO ===== */
+.ajusteNav {
+  display: flex;
+  align-items: center;
+  gap: 30px;
 }
 
-.ajusteEsquerda nav ul li a,
-.ajusteDireita ul li a {
-    transition: 0.5s ease;
-    text-decoration: none;
-    color: #0A111A;
-}
-
-.ajusteEsquerda nav ul li a:hover,
-.ajusteDireita ul li a:hover {
-    color: #FEF1F8;
-}
-
-input[type="search"] {
-    border: none;
-    outline: none;
-    padding: 6px 8px;
-    background-color: #fff;
-    width: 85%;
-}
-
+/* ===== CAMPO DE BUSCA ===== */
 .procurar {
-    border-radius: 5px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    width: 80%;
-    background-color: #fff;
-    padding: 5px 10px;
+  background: #fff;
+  padding: 5px 10px;
+  border-radius: 8px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.procurar input {
+  border: none;
+  outline: none;
+  background: none;
+  font-size: 14px;
 }
 
 .procurar img {
-    width: 10%;
-    background-color: #fff;
+  width: 16px;
+  cursor: pointer;
 }
 
-.cadastro a {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    gap: 10px;
-    background-color: #0A111A;
-    color: #fff !important;
-    padding: 10px 15px;
-    border-radius: 8px;
+/* ===== LINKS "ENTRAR" E "CADASTRO" ===== */
+.ajusteNav ul {
+  display: flex;
+  gap: 25px;
+  list-style: none;
+}
+
+.ajusteNav ul li a {
+  text-decoration: none;
+  color: #000;
+  font-size: 15px;
+  font-weight: 500;
+}
+
+/* Botão de cadastro com fundo escuro */
+.ajusteNav ul li:last-child a {
+  background: #000;
+  color: #fff;
+  padding: 8px 16px;
+  border-radius: 8px;
 }

@@ -7,7 +7,7 @@
 .asideProdutos {
     display: flex;
     flex-direction: column;
-    width: 25%;
+    width: 30%;
     align-items: center;
     height: auto;
 }
@@ -42,8 +42,8 @@
     margin: 2vw;
 }
 
-.mainProdutos {
-    width: 74%;
+.mainComprarProdutos {
+    width: 100%;
     height: auto;
 }
 
@@ -68,4 +68,70 @@
 .btnGrid img,
 .btnList img {
     width: 50%;
+}
+
+/*LISTA PRODUTOS*/
+
+.gridProdutos {
+
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+}
+
+.ajustebtnVerMais {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 10px 0 0;
+}
+
+.btnVerMais {
+    background: #FF69B4;
+    border: none;
+    border-radius: 5px;
+    color: #fff;
+    padding: 10px 30px;
+}
+
+/*PEDIR PRODUTO*/
+
+.ajusteProdutoinfo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 29px;
+    height: 90vh;
+}
+
+.imgBox {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    justify-content: center;
+}
+
+.radio-buttons {
+    display: flex;
+    justify-content: center;
+    gap: 8px;
+    position: relative;
+    top: -30px;
+    left: 80px;
+    width: 100%;
+}
+
+.ajusteProdutoinfo div {
+    width: 60%;
+}
+
+.carousel-img-pedir {
+    width: 100%;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+.descricao {
+    width: 80%;
+    margin: auto;
 }

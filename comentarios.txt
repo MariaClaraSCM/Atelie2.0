@@ -33,3 +33,8 @@ Commitando em 29/11 - 02:36.
 -- BIANCA --
 Oi, tô aqui na backend, puxei as páginas lá do front e resoliv conflitos, tudo DEVERIA estar rodando limpo
 Então, o carrinho não tá puxando produto direito, mas preciso estudar mais pra ver o problema
+
+-- SALTAO -- 
+
+Olá. Eu estou criando um componente chamado modalPedido para ser usado na dashboard do adm para inserir um pedido manualmente.
+Estou criando as funções de buscar todos os produtos, buscar todos os users e inserir novo pedido via adm. Outra coisa que estou criando é o pedido-adm.

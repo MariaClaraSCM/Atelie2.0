@@ -210,24 +210,21 @@ export async function adicionarAoCarrinho(id_produto, quantidade = 1) {
 
     const data = await res.json();
     return { ok: res.ok, data };
-
   } catch (err) {
     console.error("Erro ao adicionar ao carrinho:", err);
     return { ok: false, data: { erro: "Falha ao conectar ao servidor" } };
   }
 }
 
-
 // listar produtos do carrinho
 export async function listarCarrinho() {
   try {
     const res = await fetch(`${API_BASE_URL}/carrinho.php`, {
       method: "GET",
-      credentials: "include"
+      credentials: "include",
     });
     const data = await res.json();
     return { ok: res.ok, data };
-
   } catch (err) {
     console.error("Erro ao listar carrinho:", err);
     return { ok: false, data: [] };
@@ -241,12 +238,11 @@ export async function atualizarQuantidadeCarrinho(id_produto, quantidade) {
       method: "PUT",
       headers: { "Content-Type": "application/json" },
       credentials: "include",
-      body: JSON.stringify({ id_produto, quantidade })
+      body: JSON.stringify({ id_produto, quantidade }),
     });
 
     const data = await res.json();
     return { ok: res.ok, data };
-
   } catch (err) {
     console.error("Erro ao atualizar quantidade:", err);
     return { ok: false, data: { erro: "Falha ao conectar" } };
@@ -258,12 +254,11 @@ export async function removerDoCarrinho(id_produto) {
   try {
     const res = await fetch(`${API_BASE_URL}/carrinho.php?id=${id_produto}`, {
       method: "DELETE",
-      credentials: "include"
+      credentials: "include",
     });
 
     const data = await res.json();
     return { ok: res.ok, data };
-
   } catch (err) {
     console.error("Erro ao remover item:", err);
     return { ok: false, data: { erro: "Falha ao conectar" } };
@@ -280,3 +275,46 @@ async function verCarrinho(id_produto) {
 }
 
 verCarrinho();
+
+async function retornarUsuarios() {
+  //um select para exibir os usuários no modal
+  try {
+  } catch (error) {
+    console.log("Erro encontrado: " + error.message);
+  }
+}
+
+async function retornarTodosProdutos() {
+  try {
+  } catch (error) {
+    console.log("Algo deu errado: " + error.message);
+  }
+}
+
+async function inserirPedidoAdm() {
+  try {
+  } catch (error) {
+    console.log("Algo deu errado: " + error.message);
+  }
+}
+
+async function retornarPedidos() {
+  try {
+  } catch (error) {
+    console.log("Algo deu errado: " + error.message);
+  }
+}
+
+async function deletarPedido() {
+  try {
+  } catch (error) {
+    console.log("Algo deu errado: " + error.message);
+  }
+}
+
+async function atualizarPedidoAdm() {
+  try {
+  } catch (error) {
+    console.log("Algo deu errado: " + error.message);
+  }
+}

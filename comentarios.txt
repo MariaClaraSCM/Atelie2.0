@@ -38,3 +38,16 @@ Então, o carrinho não tá puxando produto direito, mas preciso estudar mais pr
 
 Olá. Eu estou criando um componente chamado modalPedido para ser usado na dashboard do adm para inserir um pedido manualmente.
 Estou criando as funções de buscar todos os produtos, buscar todos os users e inserir novo pedido via adm. Outra coisa que estou criando é o pedido-adm.
+
+
+-- BIANCA --
+Eu adicionei uma função para verificar o estado do servidor apache e mysql no topo da api js e puxei ainda pela App.js.
+Também alterei o banco, na tabela de item_carrinho pq precisei disso para add produto.
+Agora o produto adiciona, mas adiciona na conta 2, pois ainda não fiz a lógica de criar a carrinho apenas se tiver conta.
+Os itens no carrinho estão sendo mostrado, mas as fotos não exatamente pois seu caminho tá errado.
+Mexi muito na tela de galeria produtos pq precisei criar um modal lá.
+É possível ver as informações dos produtos no console pra teste.
+Ainda não é possível alterar a quantidade de produto no carrinho.
+Todos os produtos estão sendo adicionados sem verificar se já existe no carrinho, portanto ficará multiplas copias de um produto no carrinho.
+Devido a mudança no banco, é necessário dar drop no phpmyadmin e importar o arquivo, ou rodar um comando de alter table na tabela item_carrinho.
+Também é necessário colar a api de novo no htdocs.

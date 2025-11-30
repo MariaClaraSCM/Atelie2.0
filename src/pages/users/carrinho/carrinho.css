@@ -26,13 +26,14 @@ section {
     display: flex;
     align-items: center;
     gap: 15px;
+    margin: 5px;
 }
 
 .carrinho-foto {
     width: 95px;
     height: auto;
     background-size: 100%;
-    background-color: aqua;
+    /* background-color: aqua; */
 }
 
 .carrinho-produto h3, .carrinho-header h2 {

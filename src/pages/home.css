@@ -1,8 +1,5 @@
-body {
-    background-color: F6EFF3;
-}
-
 .home {
+    background-color: #F6EFF3;
     display: flex;
     flex-direction: column;
     align-items: center;

@@ -68,6 +68,8 @@ CREATE TABLE IF NOT EXISTS foto_produto (
 CREATE TABLE IF NOT EXISTS carrinho (
     id_carrinho INT AUTO_INCREMENT PRIMARY KEY,
     id_usuario INT NOT NULL,
+    dt_criacao DATE,
+    dt_atualizacao DATE,
 
     CONSTRAINT fk_carrinho_usuario
         FOREIGN KEY (id_usuario)
@@ -83,6 +85,8 @@ CREATE TABLE IF NOT EXISTS item_carrinho (
     quantidade INT DEFAULT 1,
     cor_item VARCHAR(50),
     nm_personagem VARCHAR(255),
+    preco_unitario DECIMAL(10,2),
+    preco_total DECIMAL(10,2),
 
     CONSTRAINT fk_item_carrinho_carrinho
         FOREIGN KEY (id_carrinho)
@@ -171,3 +175,8 @@ CREATE TABLE IF NOT EXISTS avaliacao (
     estrelas INT NOT NULL,
     comentario TEXT NOT NULL
 );
+
+INSERT INTO usuario(nm_usuario, cpf, dt_nascimento, telefone, email, senha, tipo) 
+VALUES('Egina', '11111111111', '2000-12-29', '00000000', 'admin@admin.com', '123', 'admin')
+
+-- alterar as info depois

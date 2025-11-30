@@ -186,3 +186,28 @@ section.gridProdutos {
   from { transform: translateY(-20px); opacity: 0; }
   to { transform: translateY(0); opacity: 1; }
 }
+
+.modalProduto {
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    /* inset: 0; */
+    background: rgba(0,0,0,0.5);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.modal-conteudo {
+    width: 600px;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    min-width: 300px;
+}
+
+.modal-conteudo img {
+    width: 300px;
+    width: 300px;
+}

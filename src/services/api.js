@@ -1,6 +1,18 @@
 //NÃO ALTERE ESTE ARQUIVO, ELE ESTÁ PUXANDO OS DADOS DO XAMPP LOCALHOST
 const API_BASE_URL = "http://localhost/api";
 
+export async function verificarServidor() {
+  const url = `${API_BASE_URL}/status_servidor.php`;
+  
+  try {
+      const resp = await fetch(url);
+      const json = await resp.json();
+      return json;
+  } catch (err) {
+      console.error("Erro ao verificar servidor:", err);
+      return { apache: false, mysql: false };
+  }
+}
 // ====================
 // CADASTRO USUÁRIO
 // ====================
@@ -191,91 +203,6 @@ export async function excluirCliente(id) {
   return resultado;
 }
 
-// CARRINHO DE COMPRAS
-// adicionar item ao carrinho
-export async function adicionarAoCarrinho(id_produto, quantidade = 1) {
-  try {
-    // const resp = await getUsuarioLogado();
-
-    // if (!resp.sucesso) {
-    //   return { ok: false, data: { erro: "Usuário não está logado" } };
-    // }
-
-    const res = await fetch(`${API_BASE_URL}/carrinho.php`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ id_produto, quantidade }),
-    });
-
-    const data = await res.json();
-    return { ok: res.ok, data };
-  } catch (err) {
-    console.error("Erro ao adicionar ao carrinho:", err);
-    return { ok: false, data: { erro: "Falha ao conectar ao servidor" } };
-  }
-}
-
-// listar produtos do carrinho
-export async function listarCarrinho() {
-  try {
-    const res = await fetch(`${API_BASE_URL}/carrinho.php`, {
-      method: "GET",
-      credentials: "include",
-    });
-    const data = await res.json();
-    return { ok: res.ok, data };
-  } catch (err) {
-    console.error("Erro ao listar carrinho:", err);
-    return { ok: false, data: [] };
-  }
-}
-
-// atualizar quantidade
-export async function atualizarQuantidadeCarrinho(id_produto, quantidade) {
-  try {
-    const res = await fetch(`${API_BASE_URL}/carrinho.php`, {
-      method: "PUT",
-      headers: { "Content-Type": "application/json" },
-      credentials: "include",
-      body: JSON.stringify({ id_produto, quantidade }),
-    });
-
-    const data = await res.json();
-    return { ok: res.ok, data };
-  } catch (err) {
-    console.error("Erro ao atualizar quantidade:", err);
-    return { ok: false, data: { erro: "Falha ao conectar" } };
-  }
-}
-
-// remover item
-export async function removerDoCarrinho(id_produto) {
-  try {
-    const res = await fetch(`${API_BASE_URL}/carrinho.php?id=${id_produto}`, {
-      method: "DELETE",
-      credentials: "include",
-    });
-
-    const data = await res.json();
-    return { ok: res.ok, data };
-  } catch (err) {
-    console.error("Erro ao remover item:", err);
-    return { ok: false, data: { erro: "Falha ao conectar" } };
-  }
-}
-
-async function verCarrinho(id_produto) {
-  // adiciona um produto
-  await adicionarAoCarrinho(id_produto, 1);
-
-  // lista o carrinho
-  const resultado = await listarCarrinho();
-  console.log("Carrinho:", resultado);
-}
-
-verCarrinho();
-
 async function retornarUsuarios() {
   //um select para exibir os usuários no modal
   try {
@@ -316,5 +243,42 @@ async function atualizarPedidoAdm() {
   try {
   } catch (error) {
     console.log("Algo deu errado: " + error.message);
+  }
+}
+
+// CARRINHO DE COMPRAS
+export async function adicionarAoCarrinho(idProduto, quantidade) {
+  const url = `${API_BASE_URL}/carrinho.php`;
+  try {
+    const res = await fetch(url, {
+      method: "POST",
+      headers: { "Content-Type": "application/json" },
+      body: JSON.stringify({ id_produto: idProduto, quantidade }),
+    });
+
+    const text = await res.text();
+    // console.log("DEBUG RESPOSTA CRUA:", text);
+
+    const json = JSON.parse(text);
+    return json;
+
+  } catch (err) {
+    console.error("Erro ao adicionar ao carrinho:", err);
+    return { erro: "Falha na conexão" };
+  }
+}
+
+export async function exibirCarrinho() {
+  const url = `${API_BASE_URL}/carrinho.php`;
+  try {
+    const res = await fetch(url, {
+      method: "GET",
+      headers: { "Content-Type": "application/json"}
+    });
+    const json = await res.json();
+    return json;
+  } catch (err) {
+    console.error("Erro ao buscar itens no carrinho: ", err);
+    return [];
   }
 }

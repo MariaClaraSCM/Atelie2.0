@@ -246,6 +246,7 @@ button {
 .placeholder {
     width: 24px;
     height: 24px;
+    object-fit: cover;
     border-radius: 40px;
     /* background-color: #DDDDDD; */
     margin-right: 10px;
@@ -258,4 +259,56 @@ button {
     100% {
         transform: translateX(-100%);
     }
+}
+
+button {
+    background-color: white;
+    border-radius: 50px;
+    padding: 8px;
+    border: 0;
+    margin: 20px;
+}
+
+.contato {
+    width: 100%;
+    height: 260px;
+    background: url('../assets/home/section.png');
+    background-image: url('../assets/home/section.svg');
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-size: 100%;
+    background-position: center;
+    object-fit: cover;
+    background-repeat: no-repeat;
+}
+
+.contato-cta {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.contato h2 {
+    font-family: "Instrument Serif";
+    font-size: 32px;
+    font-weight: 400;
+}
+
+.contato p {
+    color: #252424;
+}
+
+.contato button {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border: 1px solid white;
+    background-color: #FF69B4;
+    color: white;
+    padding: 10px 22px;
+    font-size: 18px;
+    border-radius: 6px;
 }

@@ -546,3 +546,11 @@ section.listaProdutosAdm {
     color: #fff;
     font-weight: 700;
 }
+
+.actions button{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+}

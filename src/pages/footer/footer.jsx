@@ -54,6 +54,9 @@ export default function Footer() {
 
           <ul>
             <h3>Redes Sociais</h3>
+            <li><i class="fa-brands fa-instagram"></i>@voegina</li>
+            <li><i class="fa-brands fa-square-facebook"></i>Vo Egina Silva</li>
+            <li><i class="fa-brands fa-whatsapp"></i>+13 00000-0000</li>
           </ul>
         </div>
       </div>

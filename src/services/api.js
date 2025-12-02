@@ -337,40 +337,145 @@ async function atualizarPedidoAdm(novoPedidoData) {
 
 }
 
-
-
 // CARRINHO DE COMPRAS
-export async function adicionarAoCarrinho(idProduto, quantidade) {
+// export async function adicionarAoCarrinho(idProduto, quantidade) {
+//   const url = `${API_BASE_URL}/carrinho.php`;
+//   try {
+//     const res = await fetch(url, {
+//       method: "POST",
+//       headers: { "Content-Type": "application/json" },
+//       body: JSON.stringify({ id_produto: idProduto, quantidade }),
+//     });
+
+//     const text = await res.text();
+//     // console.log("DEBUG RESPOSTA CRUA:", text);
+
+//     const json = JSON.parse(text);
+//     return json;
+//   } catch (err) {
+//     console.error("Erro ao adicionar ao carrinho:", err);
+//     return { erro: "Falha na conexão" };
+//   }
+// }
+export async function adicionarAoCarrinho(id_produto, quantidade) {
   const url = `${API_BASE_URL}/carrinho.php`;
-  try {
-    const res = await fetch(url, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ id_produto: idProduto, quantidade }),
+
+  const resp = await fetch(url, {
+    method: "POST",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id_produto, quantidade })
+  });
+
+  return await resp.json();
+}
+
+// export async function exibirCarrinho() {
+//   const url = `${API_BASE_URL}/carrinho.php`;
+//   try {
+//     const res = await fetch(url, {
+//       method: "GET",
+//       headers: { "Content-Type": "application/json" },
+//     });
+//     const json = await res.json();
+//     return json;
+//   } catch (err) {
+//     console.error("Erro ao buscar itens no carrinho: ", err);
+//     return [];
+//   }
+// }
+export async function exibirCarrinho() {
+  const url = `${API_BASE_URL}/carrinho.php`;
+
+  const resp = await fetch(url, {
+    method: "GET",
+    credentials: "include"
+  });
+
+  return await resp.json();
+}
+
+// export async function atualizarQuantidade(id_item_carrinho, quantidade) {
+//     const url = `${API_BASE_URL}/carrinho.php`;
+
+//     const resp = await fetch(url, {
+//         method: "PUT",
+//         headers: {
+//             "Content-Type": "application/json"
+//         },
+//         body: JSON.stringify({ id_item_carrinho, quantidade })
+//     });
+
+//     return await resp.json();
+// }
+export async function atualizarQuantidade(id_item_carrinho, quantidade) {
+  const url = `${API_BASE_URL}/carrinho.php`;
+
+  const resp = await fetch(url, {
+    method: "PUT",
+    credentials: "include",
+    headers: { "Content-Type": "application/json" },
+    body: JSON.stringify({ id_item_carrinho, quantidade })
+  });
+
+  return await resp.json();
+}
+
+export async function removerItemCarrinho(id_item) {
+    const url = `${API_BASE_URL}/carrinho.php?id=${id_item}`;
+
+    const resp = await fetch(url, {
+        method: "DELETE"
     });
 
-    const text = await res.text();
-    // console.log("DEBUG RESPOSTA CRUA:", text);
+    return resp.json();
+}
 
-    const json = JSON.parse(text);
-    return json;
+
+// 1. Contar produtos
+export async function contarProdutos() {
+  const url = `${API_BASE_URL}/adm-produtos.php`;
+
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    if (Array.isArray(data)) return data.length;
+    if (data.produtos) return data.produtos.length;
+    return 0;
   } catch (err) {
-    console.error("Erro ao adicionar ao carrinho:", err);
-    return { erro: "Falha na conexão" };
+    console.error("Erro ao contar produtos:", err);
+    return 0;
   }
 }
 
-export async function exibirCarrinho() {
-  const url = `${API_BASE_URL}/carrinho.php`;
+
+// 2. Contar pedidos
+export async function contarPedidos() {
+  const url = `${API_BASE_URL}/pedidos-adm.php?buscar=pedido`;
+
   try {
-    const res = await fetch(url, {
-      method: "GET",
-      headers: { "Content-Type": "application/json" },
-    });
-    const json = await res.json();
-    return json;
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.pedidos) return data.pedidos.length;
+    if (Array.isArray(data)) return data.length;
+    return 0;
   } catch (err) {
-    console.error("Erro ao buscar itens no carrinho: ", err);
-    return [];
+    console.error("Erro ao contar pedidos:", err);
+    return 0;
+  }
+}
+
+// 3. Contar clientes
+export async function contarClientes() {
+  const url = `${API_BASE_URL}/clientes.php`;
+  try {
+    const res = await fetch(url);
+    const data = await res.json();
+    if (data.clientes) return data.clientes.length;
+    if (Array.isArray(data)) return data.length;
+    return 0;
+  } catch (err) {
+    console.error("Erro ao contar clientes:", err);
+    return 0;
   }
 }

@@ -57,3 +57,6 @@ Também é necessário colar a api de novo no htdocs.
 Hoje, irei validar as ações de criar pedido dia adm, buscar pedidos, buscar usuários, criar pedido via adm, deletar e atualizar pedido via adm. Sei que é bastante coisa, mas adiantei até que bastante no sábado. Se der tempo, quero fazer mais ações pra puxar na dashboard e, claro, criar as funções do api.js para puxar pro front.
  
 Não sei se vai dar tempo de fazer o modal hoje. Vamos ver.
+
+-- BIANCA --
+Terminei a estilização da home, vou fazer um pouco mais do carrinho.

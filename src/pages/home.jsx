@@ -1,3 +1,4 @@
+import { useState, useRef, useEffect } from "react";
 import "./home.css";
 import iconArtesanal from "../assets/home/iconArtesanal.svg";
 import iconBoaQualidade from "../assets/home/iconBoaQualidade.svg";
@@ -6,6 +7,40 @@ import imgProdutos from "../assets/home/imgProdutos.png";
 import imgEncomendas from "../assets/home/imgEncomendas.png";
 
 export default function Home() {
+    const trackRef = useRef(null);
+    const [index, setIndex] = useState(0);
+    const cardWidth = 380; // largura aproximada (ajuste se necessário)
+    const totalCards = testemonials.length;
+
+    // Pausar animação automática e movimentar manualmente
+    function mover(direcao) {
+        if (!trackRef.current) return;
+
+        // Atualiza índice
+        setIndex(prev => {
+            let novo = prev + direcao;
+            if (novo < 0) novo = totalCards - 1;
+            if (novo >= totalCards) novo = 0;
+            return novo;
+        });
+
+        // Pausa a animação
+        trackRef.current.style.animation = "none";
+    }
+
+    // Reativa a animação automática após 4s parado
+    useEffect(() => {
+        if (!trackRef.current) return;
+
+        const track = trackRef.current;
+        track.style.transform = `translateX(${-index * cardWidth}px)`;
+
+        const timeout = setTimeout(() => {
+            track.style.animation = "scrollInfinito 20s infinite linear";
+        }, 4000);
+
+        return () => clearTimeout(timeout);
+    }, [index]);
     return (
         <div className="home">
             <section className="hero">
@@ -65,11 +100,11 @@ export default function Home() {
             <section className="testemonials">
                 <h1>Depoimentos</h1>
                 <div className="container-carrossel">
-                    <button id="btn-voltar">
+                    <button id="btn-voltar" onClick={() => mover(-1)}>
                         <i className="fa-solid fa-chevron-left"></i>
                     </button>
                     <div className="carrossel">
-                        <div className="testemonial-messages">
+                        <div id="track" className="testemonial-messages" ref={trackRef}>
                             {
                                 testemonials.map((testemonial, index) => (
                                     <div className="testemonial-card" key={index}>
@@ -105,7 +140,14 @@ export default function Home() {
                             }
                         </div>
                     </div>
-                    <button id="btn-proximo"><i className="fa-solid fa-chevron-right"></i></button>
+                    <button id="btn-proximo" onClick={()=>mover(1)}><i className="fa-solid fa-chevron-right"></i></button>
+                </div>
+            </section>
+            <section className="contato">
+                <div className="contato-cta">
+                    <h2>Deseja encomendar?</h2>
+                    <p>Entre em contato pelo Whatsapp</p>
+                    <button><i class="fa-brands fa-whatsapp"></i>Whatsapp</button>
                 </div>
             </section>
         </div>
@@ -114,21 +156,21 @@ export default function Home() {
 
 const testemonials = [
     {
-        photo: 'https://imebehavioralhealth.com/wp-content/uploads/2021/10/user-icon-placeholder-1.png',
+        photo: 'https://images.unsplash.com/photo-1607746882042-944635dfe10e',
         name: 'Ana',
         rating: 5,
-        message: 'Adorei minha bolsa personalizada! A qualidade é incrível e o atendimento foi super atencioso. Recomendo muito!'
+        message: 'Recebi minha encomenda exatamente como pedi. Acabamento impecável. Valeu muito a pena!'
     },
     {
-        photo: 'https://imebehavioralhealth.com/wp-content/uploads/2021/10/user-icon-placeholder-1.png',
+        photo: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2',
         name: 'Brenda',
         rating: 5,
-        message: 'Adorei minha bolsa personalizada! A qualidade é incrível e o atendimento foi super atencioso. Recomendo muito!'
+        message: 'A qualidade superou minhas expectativas. Atendimento rápido e muito profissional.'
     },
     {
-        photo: 'https://imebehavioralhealth.com/wp-content/uploads/2021/10/user-icon-placeholder-1.png',
+        photo: 'https://images.unsplash.com/photo-1502685104226-ee32379fefbe',
         name: 'Clara',
         rating: 5,
-        message: 'Adorei minha bolsa personalizada! A qualidade é incrível e o atendimento foi super atencioso. Recomendo muito!'
+        message: 'Produto lindo e muito bem feito. Com certeza comprarei novamente.'
     },
 ]

@@ -200,14 +200,46 @@ section.gridProdutos {
 }
 
 .modal-conteudo {
-    width: 600px;
+    /* width: 100%; */
+    display: flex;
+    /* flex-wrap: wrap; */
     background: white;
     padding: 20px;
     border-radius: 10px;
     min-width: 300px;
+    gap: 25px;
+}
+
+.modal-info {
+  display: flex;
+  flex-direction: column;
 }
 
 .modal-conteudo img {
-    width: 300px;
-    width: 300px;
+    width: 600px;
+    height: 100%;
+    object-fit: cover;
+}
+
+.btnFechar{
+  position: absolute;
+  top: 0;
+  right: 0;
+}
+
+.btnConfirmar{
+  background-color: #ff4f8b;
+  color: white;
+  padding: 12px 16px;
+  border-radius: 6px;
+}
+
+.ajusteCardProduto {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+}
+
+.ajusteCardProduto p {
+  margin: 0;
 }

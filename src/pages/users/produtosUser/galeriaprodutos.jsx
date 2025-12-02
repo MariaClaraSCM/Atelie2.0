@@ -85,7 +85,6 @@ export default function GaleriaProdutos() {
         }
     }
 
-
   return (
     <main className="galeriaProdutos">
       <section className="gridProdutos">
@@ -109,13 +108,13 @@ export default function GaleriaProdutos() {
 
             <div className="acoesAdm">
               <button className="favoritar"></button>
-              <button className="add-carrinho" onClick={() => definirProdutoAddCarrinho(p)}>Add Carrinho</button>
+              <button className="add-carrinho" onClick={() => definirProdutoAddCarrinho(p)}><i class="fa-solid fa-cart-shopping"></i>Carrinho</button>
             </div>
           </div>
         ))}
       </section>
 
-      {/* MODAL */}
+      {/* MODAL DE CONFIRMAR COMPRA */}
       {modal && produtoSelecionado && (
         <div className="modalProduto" onClick={() => setModal(false)}>
           <div className="modal-conteudo" onClick={(e) => e.stopPropagation()}>
@@ -127,7 +126,7 @@ export default function GaleriaProdutos() {
                 (<img src={produtoSelecionado.fotos?.[0] || produtoSelecionado.foto} alt={produtoSelecionado.nm_produto}/>
             )}
 
-            <div className="info">
+            <div className="modal-info">
               <h2>{produtoSelecionado.nm_produto}</h2>
               <p>{produtoSelecionado.descricao}</p>
               <div className="ajusteCardProduto">
@@ -136,10 +135,9 @@ export default function GaleriaProdutos() {
                 <p><b>Tamanho:</b> {produtoSelecionado.qt_tamanho}</p>
                 <p><b>Compra: </b>{produtoSelecionado.tipo}</p>
               </div>
-              <button onClick={() => AdicionarProdutoAoCarrinho(produtoSelecionado)}>Confirmar</button>
+              <button onClick={() => AdicionarProdutoAoCarrinho(produtoSelecionado)} className="btnConfirmar">Confirmar</button>
             </div>
-
-            <button onClick={() => setModal(false)}><i className="fa-solid fa-xmark"></i></button>
+            <button onClick={() => setModal(false)} className="btnFechar"><i className="fa-solid fa-xmark"></i></button>
           </div>
         </div>
       )}

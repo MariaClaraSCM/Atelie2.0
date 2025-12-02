@@ -38,6 +38,7 @@ export default function AdmDashboard() {
           </li>
 
           <li onClick={() => handleClick("categorias")}>
+            <i className="fa-solid fa-layer-group icon"></i>
             <span className="links">Categorias</span>
           </li>
 

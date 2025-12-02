@@ -18,16 +18,27 @@ switch ($req) { //retornar usuarios
 
     case "GET":
         try {
-            //recebe um query parameter:
+            //recebe um query parameter: //necessário para selecionar pedidos já feitos e usuários que posso atribuir pedido
             $buscar = $_GET['buscar'];
             if (!isset($buscar)) {
                 http_response_code(400);
-                json_encode(['success' => false, 'message' => 'Não foi definido se devemos buscar usuários ou pedidos!!!']);
+                echo json_encode(['success' => false, 'message' => 'Não foi definido se devemos buscar usuários ou pedidos!!!']);
                 exit();
-            } else if ($buscar  == 'pedido') {
+            } else if ($buscar  == 'pedido') { //teria que ver como eu iria buscar os pedidos do adm...
+                $query = $pdo->prepare('select * from pedido where feito_por = ?');
+                $query->execute(['funcionario']);
+                if (!empty($query)) {
+                    http_response_code(200);
+                    echo json_encode(['success' => true, 'pedidos' => $query->fetchAll(PDO::FETCH_ASSOC)]);
+                    exit();
+                } else {
+                    http_response_code(404);
+                    echo json_encode(['success' => false, 'message' => 'Sem pedidos feitos pelo adm!']);
+                    exit();
+                }
             } else if ($buscar == 'usuario') {
-                $query = $pdo->prepare('select * from usuario where tipo = user');
-                $query->execute();
+                $query = $pdo->prepare('select * from usuario where tipo = ?');
+                $query->execute(['user']);
                 if (empty($query)) {
                     http_response_code(404);
                     echo json_encode(['success' => false, 'message' => 'Não existem usuários no banco de dados!']);
@@ -60,15 +71,15 @@ switch ($req) { //retornar usuarios
             $pdo->beginTransaction();
 
             // INSERE PEDIDO PRINCIPAL
-            $query = $pdo->prepare("INSERT INTO pedido (dt_pedido, vl_total, metodo_pagamento, status_pedido, id_usuario) VALUES (?, ?, ?, ?, ?)");
-            $query->execute([$pedido['data'], $pedido['total'], $pedido['metodo'], $pedido['status'], $pedido['user']]);
+            $query = $pdo->prepare("INSERT INTO pedido (dt_pedido, vl_total, metodo_pagamento, status_pedido, id_usuario, feito_por) VALUES (?, ?, ?, ?, ?, ?)");
+            $query->execute([$pedido['data'], $pedido['total'], $pedido['metodo'], $pedido['status'], $pedido['user'], $pedido['feito_por']]);
 
             $id_pedido = $pdo->lastInsertId();
 
             // INSERE ITENS DO PEDIDO
             foreach ($pedido['item_pedido'] as $item) {
                 $query2 = $pdo->prepare('INSERT INTO item_pedido (id_pedido, id_produto, qt_item, cor_item, nm_personagem) VALUES (?, ?, ?, ?, ?)');
-                $query2->execute([$id_pedido, $item['id'], $item['quantidade'], $item['cor'], $item['personagem']]);
+                $query2->execute([$id_pedido, $item['id_produto'], $item['quantidade'], $item['cor'], $item['personagem']]);
 
                 if ($query2->rowCount() == 0) {
                     throw new Exception('Um dos itens não pode ser adicionado!'); //lança excessão pra parar o código
@@ -96,34 +107,34 @@ switch ($req) { //retornar usuarios
         $atualizarPedido = json_decode(file_get_contents("php://input"), true);
         if (!isset($atualizarPedido) || empty($atualizarPedido)) {
             http_response_code(400);
-            json_encode(['success' => false, 'message' => 'Json vazio!!']);
+            echo json_encode(['success' => false, 'message' => 'Json vazio!!']);
             exit();
         }
         try {
-            $query = $pdo->prepare('update pedido set dt_pedido = ?, vl_total = ?, metodo_pagamento = ?, status_pedido = ? where id_usuario = ?');
-            $query->execute([$atualizarPedido['data'], $atualizarPedido['total'], $atualizarPedido['metodo'], $atualizarPedido['status'], $atualizarPedido['id']]);
+            $query = $pdo->prepare('update pedido set dt_pedido = ?, vl_total = ?, metodo_pagamento = ?, status_pedido = ?, feito_por = ? where id_pedido = ?');
+            $query->execute([$atualizarPedido['data'], $atualizarPedido['total'], $atualizarPedido['metodo'], $atualizarPedido['status'], $atualizarPedido['feito_por'] , $atualizarPedido['id_pedido']]);
             if ($query->rowCount() > 0) {
-                foreach ($atualizarPedido['itens'] as $item) {
-                    $query2 = $pdo->prepare('update item_pedido set id_item = ?, qt_item = ?, cor_item = ?, nm_personagem = ?');
-                    $query2->execute([$item['id_item'], $item['quantidade'], $item['cor'], $item['personagem']]);
+                foreach ($atualizarPedido['item_pedido'] as $item) {
+                    $query2 = $pdo->prepare('update item_pedido set qt_item = ?, cor_item = ?, nm_personagem = ? where id_item = ?');
+                    $query2->execute([$item['quantidade'], $item['cor'], $item['personagem'], $item['id_item']]);
                     if ($query2->rowCount() == 0) {
                         http_response_code(404);
-                        json_encode(['success' => false, 'message' => 'Item não encontrado!']);
+                        echo  json_encode(['success' => false, 'message' => 'Item não encontrado!']);
                         exit();
                     }
                 }
                 http_response_code(200);
-                json_encode(['success' => true, 'message' => 'Itens adicionados com sucesso!!!']);
+                echo  json_encode(['success' => true, 'message' => 'Itens adicionados com sucesso!!!']);
                 exit();
                 //tenho que arrumar dps, mas fica assim por enquanto
             } else {
                 http_response_code(404);
-                json_encode(['success' => false, 'message' => 'Algo deu errado! Suas credenciais de pedido n funcionaram!']);
+                echo json_encode(['success' => false, 'message' => 'Algo deu errado! Suas credenciais de pedido n funcionaram!']);
                 exit();
             }
         } catch (PDOException $e) {
             http_response_code(500);
-            json_encode(['error' => 'Algo deu errado!', 'debug' => $e->getMessage()]);
+            echo json_encode(['error' => 'Algo deu errado!', 'debug' => $e->getMessage()]);
             exit();
         }
         break;
@@ -165,6 +176,9 @@ switch ($req) { //retornar usuarios
                     }
                 }
             } catch (PDOException $e) {
+                http_response_code(500);
+                echo json_encode(['error' => 'Algo deu errado!', 'debug' => $e->getMessage()]);
+                exit();
             }
         }
         break;

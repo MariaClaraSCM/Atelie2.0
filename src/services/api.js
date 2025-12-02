@@ -3,14 +3,14 @@ const API_BASE_URL = "http://localhost/api";
 
 export async function verificarServidor() {
   const url = `${API_BASE_URL}/status_servidor.php`;
-  
+
   try {
-      const resp = await fetch(url);
-      const json = await resp.json();
-      return json;
+    const resp = await fetch(url);
+    const json = await resp.json();
+    return json;
   } catch (err) {
-      console.error("Erro ao verificar servidor:", err);
-      return { apache: false, mysql: false };
+    console.error("Erro ao verificar servidor:", err);
+    return { apache: false, mysql: false };
   }
 }
 // ====================
@@ -206,27 +206,95 @@ export async function excluirCliente(id) {
 async function retornarUsuarios() {
   //um select para exibir os usuários no modal
   try {
+    const response = await fetch(
+      `${API_BASE_URL}/pedidos-adm.php?buscar=usuario`
+    ); //usado nesse conteto p mostrar usuarios no modal de criar pedido, mas pode ser usado em outras operações que precisem listar todos os users clientes
+    const resultado = await response.json();
+    if (resultado.success === false) {
+      return false;
+    } else if (resultado.error) {
+      console.log("Debug: " + response.debug);
+    } else {
+      return resultado.usuarios;
+    }
   } catch (error) {
     console.log("Erro encontrado: " + error.message);
   }
 }
 
-async function retornarTodosProdutos() {
+// ====================
+// PEDIDOS
+// ====================
+
+async function inserirPedidoAdm(pedidoData) {
+  //já recebe com o formato de objeto
+  //formato:
+  // {
+  // 	"data": "2025-12-01",
+  // 	"total": 35,
+  // 	"metodo": "pix",
+  // 	"status": "Pendente",
+  // 	"user": 1,
+  //   "item_pedido": [
+  //     {
+  //       "id_produto": 10,
+  //       "quantidade": 2,
+  //       "cor": "azul",
+  //       "personagem": "Mario"
+  //     },
+  //     {
+  //       "id_produto": 13,
+  //       "quantidade": 1,
+  //       "cor": "branco",
+  //       "personagem": null
+  //     },
+  //     {
+  //       "id_produto": 16,
+  //       "quantidade": 3,
+  //       "cor": "preto",
+  //       "personagem": null
+  //     }
+  //   ]
+  // }
+
   try {
+    const response = await fetch(`${API_BASE_URL}/pedidos-adm.php`, {
+      //`${API_BASE_URL}/clientes.php`
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(pedidoData), //convertendo so atributos p json
+    });
+
+    const resultado = await response.json(); //precisa converter dnv pq o fetch transforma em um outro tipo ao receber
+    if (resultado.success === false) {
+      return false;
+    } else if (resultado.error) {
+      console.log("Debug: " + resultado.debug);
+      return false;
+    } else {
+      return true;
+    }
   } catch (error) {
     console.log("Algo deu errado: " + error.message);
   }
 }
 
-async function inserirPedidoAdm() {
+async function retornarPedidosAdm() {
   try {
-  } catch (error) {
-    console.log("Algo deu errado: " + error.message);
-  }
-}
-
-async function retornarPedidos() {
-  try {
+    const response = await fetch(
+      `${API_BASE_URL}/pedidos-adm.php?buscar=pedido`
+    ); //só usando query params que da p pegar via get neste caso.
+    const resultado = await response.json();
+    if (resultado.success === false) {
+      return false; //pq n achou pedidos feitos pelo adm. Aí o front vai tratar aonde seria p exibir.
+    } else if (resultado.error) {
+      console.log("Debug: " + resultado.debug);
+      return false;
+    } else {
+      return resultado.pedidos;
+    }
   } catch (error) {
     console.log("Algo deu errado: " + error.message);
   }
@@ -234,17 +302,42 @@ async function retornarPedidos() {
 
 async function deletarPedido() {
   try {
+    const response = await fetch(`${API_BASE_URL}/`);
+    const resultado = await response.json();
+    if(resultado.success === false) {
+      return false; //nenhum pedido ou item pedido encontrado! Ele exclui os dois de uma vez
+    } else if(resultado.error) {
+      console.log("Debug: " + resultado.debug);
+      return false;
+    } else {
+      return true;
+    }
   } catch (error) {
-    console.log("Algo deu errado: " + error.message);
+    console.log("Algo deu errado: " + error.message); 
   }
 }
 
-async function atualizarPedidoAdm() {
+async function atualizarPedidoAdm(novoPedidoData) {
   try {
+    const response = await fetch(`${API_BASE_URL}/`, {
+      method: 'PUT',
+      headers: {
+        'Content-Type': 'application/json'
+      },
+      body: json.stringify(novoPedidoData)
+    }) 
+
+    const resultado = await response.json();
+    if(resultado.success === false) {
+      return false;
+    }
   } catch (error) {
     console.log("Algo deu errado: " + error.message);
   }
+
 }
+
+
 
 // CARRINHO DE COMPRAS
 export async function adicionarAoCarrinho(idProduto, quantidade) {
@@ -261,7 +354,6 @@ export async function adicionarAoCarrinho(idProduto, quantidade) {
 
     const json = JSON.parse(text);
     return json;
-
   } catch (err) {
     console.error("Erro ao adicionar ao carrinho:", err);
     return { erro: "Falha na conexão" };
@@ -273,7 +365,7 @@ export async function exibirCarrinho() {
   try {
     const res = await fetch(url, {
       method: "GET",
-      headers: { "Content-Type": "application/json"}
+      headers: { "Content-Type": "application/json" },
     });
     const json = await res.json();
     return json;

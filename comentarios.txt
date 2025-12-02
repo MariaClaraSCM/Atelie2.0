@@ -51,3 +51,9 @@ Ainda não é possível alterar a quantidade de produto no carrinho.
 Todos os produtos estão sendo adicionados sem verificar se já existe no carrinho, portanto ficará multiplas copias de um produto no carrinho.
 Devido a mudança no banco, é necessário dar drop no phpmyadmin e importar o arquivo, ou rodar um comando de alter table na tabela item_carrinho.
 Também é necessário colar a api de novo no htdocs.
+
+-- SALTAO --
+
+Hoje, irei validar as ações de criar pedido dia adm, buscar pedidos, buscar usuários, criar pedido via adm, deletar e atualizar pedido via adm. Sei que é bastante coisa, mas adiantei até que bastante no sábado. Se der tempo, quero fazer mais ações pra puxar na dashboard e, claro, criar as funções do api.js para puxar pro front.
+ 
+Não sei se vai dar tempo de fazer o modal hoje. Vamos ver.
